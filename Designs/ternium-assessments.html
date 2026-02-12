@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Dashboard | Ember Ai</title>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+body {
+background-color: #F9FAFB; /* neutral-50 */
+color: #171717;
+-webkit-font-smoothing: antialiased;
+font-family: 'Inter', sans-serif;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+width: 6px;
+height: 6px;
+}
+::-webkit-scrollbar-track {
+background: transparent;
+}
+::-webkit-scrollbar-thumb {
+background: #e5e5e5;
+border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: #d4d4d4;
+}
+/* Sidebar transition helper */
+.sidebar-text {
+transition: opacity 0.2s, display 0.2s;
+white-space: nowrap;
+}
+.collapsed .sidebar-text {
+display: none;
+opacity: 0;
+}
+.tooltip {
+display: none;
+}
+.collapsed .group:hover .tooltip {
+display: block;
+}
+</style>
+<style>
+#sidebar.collapsed nav { overflow: visible; }
+</style>
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style><link id="all-fonts-link-font-cormorant" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-cormorant">.font-cormorant { font-family: 'Cormorant Garamond', serif !important; }</style></head>
+  <body class="flex h-screen overflow-hidden bg-neutral-50 text-neutral-900">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden md:flex flex-col w-20 collapsed bg-white border-r border-neutral-200 h-full flex-shrink-0 z-20 transition-all duration-300 ease-in-out relative">
+      <!-- Logo Area -->
+      <div class="h-16 flex items-center justify-between px-6 border-b border-neutral-100 overflow-hidden shrink-0">
+        <div class="flex items-center gap-2 text-[#FF5E00] whitespace-nowrap">
+          <iconify-icon icon="solar:flame-linear" width="24" height="24" stroke-width="1.5" class="flex-shrink-0"></iconify-icon>
+          <span class="font-semibold tracking-tight text-neutral-900 text-lg sidebar-text transition-opacity duration-300">
+            Ember Ai
+          </span>
+        </div>
+        <!-- Collapse Button -->
+        <button onclick="toggleSidebar()" class="text-neutral-400 hover:text-neutral-900 transition-colors p-1 rounded hover:bg-neutral-100 absolute right-4">
+          <iconify-icon id="sidebar-toggle-icon" icon="solar:double-alt-arrow-right-linear" width="20" height="20"></iconify-icon>
+        </button>
+      </div>
+
+      <!-- Navigation Items -->
+      <nav class="flex-1 overflow-y-auto overflow-x-hidden py-6 px-3 space-y-1">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:home-smile-linear" width="20" height="20" class="flex-shrink-0 group-hover:text-neutral-900"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text" data-key="nav_home">
+            Inicio
+          </span>
+          <!-- Tooltip -->
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm" data-key="nav_home">
+            Inicio
+          </span>
+        </a>
+
+        <a href="#" class="flex items-center justify-between px-3 py-2.5 bg-neutral-100 text-neutral-900 rounded-lg transition-colors group relative">
+          <div class="flex items-center gap-3 overflow-hidden">
+            <iconify-icon icon="solar:clipboard-check-linear" width="20" height="20" class="flex-shrink-0 transition-colors text-neutral-900"></iconify-icon>
+            <span class="text-sm font-medium sidebar-text" data-key="nav_eval">
+              Evaluaciones
+            </span>
+          </div>
+          <span class="bg-[#FF5E00] text-white text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">
+            2
+          </span>
+          <!-- Tooltip -->
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm" data-key="nav_eval">
+            Evaluaciones
+          </span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:book-bookmark-linear" width="20" height="20" class="flex-shrink-0 group-hover:text-neutral-900 transition-colors"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text" data-key="nav_learning">
+            Mi Aprendizaje
+          </span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm" data-key="nav_learning">
+            Mi Aprendizaje
+          </span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:chat-round-line-linear" width="20" height="20" class="flex-shrink-0 group-hover:text-[#FF5E00] transition-colors"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text" data-key="nav_coach">
+            Coach AI
+          </span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm" data-key="nav_coach">
+            Coach AI
+          </span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:chart-2-linear" width="20" height="20" class="flex-shrink-0 group-hover:text-neutral-900 transition-colors"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text" data-key="nav_progress">
+            Mi Progreso
+          </span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm" data-key="nav_progress">
+            Mi Progreso
+          </span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:diploma-verified-linear" width="20" height="20" class="flex-shrink-0 group-hover:text-neutral-900 transition-colors"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text" data-key="nav_certs">
+            Certificaciones
+          </span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm" data-key="nav_certs">
+            Certificaciones
+          </span>
+        </a>
+
+        <div class="pt-4 mt-4 border-t border-neutral-100">
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+            <iconify-icon icon="solar:settings-linear" width="20" height="20" class="flex-shrink-0 group-hover:text-neutral-900 transition-colors"></iconify-icon>
+            <span class="text-sm font-medium sidebar-text" data-key="nav_settings">
+              Configuración
+            </span>
+            <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm" data-key="nav_settings">
+              Configuración
+            </span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+            <iconify-icon icon="solar:question-circle-linear" width="20" height="20" class="flex-shrink-0 group-hover:text-neutral-900 transition-colors"></iconify-icon>
+            <span class="text-sm font-medium sidebar-text" data-key="nav_help">
+              Ayuda y Soporte
+            </span>
+            <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm" data-key="nav_help">
+              Ayuda y Soporte
+            </span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- User Profile -->
+      <div class="p-4 border-t border-neutral-100 flex-shrink-0 overflow-hidden">
+        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-50 transition-colors cursor-pointer whitespace-nowrap">
+          <div class="w-10 h-10 rounded-full bg-neutral-200 flex-shrink-0 flex items-center justify-center text-neutral-600 font-semibold text-sm border border-neutral-300">
+            CM
+          </div>
+          <div class="flex-1 min-w-0 sidebar-text">
+            <p class="text-sm font-medium text-neutral-900 truncate">
+              Carlos Mendoza
+            </p>
+            <div class="flex items-center gap-1.5">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-500"></span>
+              <p class="text-xs text-neutral-500 truncate" data-key="role">
+                Supervisor
+              </p>
+            </div>
+          </div>
+          <iconify-icon icon="solar:logout-2-linear" class="text-neutral-400 hover:text-red-500 transition-colors sidebar-text" width="20"></iconify-icon>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+      <!-- Mobile Header -->
+      <header class="h-16 md:hidden flex items-center justify-between px-4 border-b border-neutral-200 bg-white z-10 shrink-0">
+        <div class="flex items-center gap-2 text-[#FF5E00]">
+          <iconify-icon icon="solar:flame-linear" width="24" height="24"></iconify-icon>
+          <span class="font-semibold tracking-tight text-neutral-900">
+            Ember Ai
+          </span>
+        </div>
+        <button class="text-neutral-500 p-2">
+          <iconify-icon icon="solar:hamburger-menu-linear" width="24" height="24"></iconify-icon>
+        </button>
+      </header>
+
+      <!-- Screen 2.1: Employee Home Dashboard -->
+      <div class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-10 scroll-smooth">
+        <div class="max-w-6xl mx-auto space-y-8 min-h-[calc(100vh-8rem)]">
+          <!-- Header Section -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <h1 class="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">
+                Mis Evaluaciones
+              </h1>
+              <p class="text-neutral-500 mt-2 font-medium">
+                Gestiona tu desarrollo profesional y certificaciones.
+              </p>
+            </div>
+            <!-- Summary Stats -->
+            <div class="flex items-center gap-4 bg-white border border-neutral-200 p-3 rounded-xl shadow-sm">
+              <div class="relative w-14 h-14 shrink-0">
+                <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#F5F5F5" stroke-width="8"></circle>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#FF5E00" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="80" stroke-linecap="round"></circle>
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center text-xs font-bold">
+                  68%
+                </span>
+              </div>
+              <div class="pr-4">
+                <div class="text-sm font-semibold text-neutral-900">
+                  Progreso Global
+                </div>
+                <div class="text-xs text-neutral-500">8 de 12 Completadas</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-200">
+            <div class="flex gap-6 overflow-x-auto no-scrollbar">
+              <button onclick="switchTab('process')" id="btn-process" class="pb-3 border-b-2 border-[#FF5E00] text-[#FF5E00] font-medium text-sm whitespace-nowrap transition-all">
+                Conocimiento de Procesos
+              </button>
+              <button onclick="switchTab('behavior')" id="btn-behavior" class="pb-3 border-b-2 border-transparent text-neutral-500 hover:text-neutral-700 font-medium text-sm whitespace-nowrap transition-all">
+                Escenarios de Comportamiento
+              </button>
+            </div>
+            <div class="flex items-center gap-2 pb-2 sm:pb-3">
+              <button class="flex items-center gap-2 px-3 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-medium text-neutral-600 hover:bg-neutral-50 transition-colors shadow-sm">
+                <iconify-icon icon="solar:filter-linear" width="14"></iconify-icon>
+                Filtrar
+              </button>
+              <button class="flex items-center gap-2 px-3 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-medium text-neutral-600 hover:bg-neutral-50 transition-colors shadow-sm">
+                <iconify-icon icon="solar:sort-vertical-linear" width="14"></iconify-icon>
+                Ordenar
+              </button>
+            </div>
+          </div>
+
+          <!-- Tab Content: Process -->
+          <div id="tab-content-process" class="space-y-4 animate-fade-in">
+            <!-- Item 1: Completed -->
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 hover:shadow-md transition-all group flex flex-col md:flex-row md:items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center shrink-0">
+                <iconify-icon icon="solar:check-circle-bold" width="20"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 class="text-base font-semibold text-neutral-900 truncate">
+                    Procesos Estratégicos (MAN.1)
+                  </h3>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-green-100 text-green-700">
+                    Completado
+                  </span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-neutral-500">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:folder-path-connect-linear" width="12"></iconify-icon>
+                    Gestión
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:clock-circle-linear" width="12"></iconify-icon>
+                    15 min
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:star-linear" width="12"></iconify-icon>
+                    Score: 85%
+                  </span>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 border-t md:border-t-0 md:border-l border-neutral-100 pt-4 md:pt-0 md:pl-4 mt-2 md:mt-0">
+                <div class="text-right hidden md:block">
+                  <div class="text-xs text-neutral-400 mb-1">
+                    Tu calificación
+                  </div>
+                  <div class="text-lg font-bold text-neutral-900">8.5/10</div>
+                </div>
+                <button class="w-full md:w-auto px-4 py-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-900 text-sm font-medium rounded-lg transition-colors whitespace-nowrap">
+                  Ver Detalles
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 2: In Progress -->
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 hover:shadow-md transition-all group flex flex-col md:flex-row md:items-center gap-4 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#FF5E00]"></div>
+              <div class="w-10 h-10 rounded-full bg-orange-50 text-[#FF5E00] flex items-center justify-center shrink-0">
+                <iconify-icon icon="solar:play-circle-bold" width="20"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 class="text-base font-semibold text-neutral-900">
+                    Proceso: Prevenir
+                  </h3>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-orange-50 text-orange-600 border border-orange-100">
+                    En Progreso
+                  </span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-neutral-500 mb-2">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:shield-warning-linear" width="12"></iconify-icon>
+                    Seguridad
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:clock-circle-linear" width="12"></iconify-icon>
+                    20 min
+                  </span>
+                </div>
+                <div class="w-full max-w-xs h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-[#FF5E00] w-[60%] rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 pt-2 md:pt-0">
+                <button class="md:w-auto hover:bg-neutral-800 transition-colors shadow-neutral-900/10 whitespace-nowrap flex text-sm font-medium text-white bg-[#171717] w-full rounded-lg pt-2 pr-4 pb-2 pl-4 shadow-lg gap-x-2 gap-y-2 items-center justify-center" onclick="window.location.href='ternium-knowledge-assessment.html'" role="button">
+                  <span class="">Continuar</span>
+                  <iconify-icon icon="solar:arrow-right-linear" width="16" class=""></iconify-icon>
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 3: Not Started -->
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 hover:shadow-md transition-all group flex flex-col md:flex-row md:items-center gap-4 opacity-80 hover:opacity-100">
+              <div class="w-10 h-10 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0">
+                <iconify-icon icon="solar:file-text-linear" width="20"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 class="text-base font-semibold text-neutral-900">
+                    Proceso: Reparar - Restauración de Emergencia
+                  </h3>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-neutral-100 text-neutral-500">
+                    No iniciado
+                  </span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-neutral-500">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:hammer-linear" width="12"></iconify-icon>
+                    Operaciones
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:clock-circle-linear" width="12"></iconify-icon>
+                    25 min
+                  </span>
+                </div>
+              </div>
+              <div class="pt-2 md:pt-0">
+                <button class="w-full md:w-auto px-4 py-2 bg-white border border-neutral-200 hover:border-neutral-300 text-neutral-900 text-sm font-medium rounded-lg transition-colors whitespace-nowrap">
+                  Iniciar
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 4: Reassessment -->
+            <div class="bg-red-50/30 border border-red-100 rounded-xl p-5 hover:shadow-md transition-all group flex flex-col md:flex-row md:items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-red-100 text-red-500 flex items-center justify-center shrink-0 animate-pulse">
+                <iconify-icon icon="solar:refresh-circle-bold" width="20"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 class="text-base font-semibold text-neutral-900">
+                    Proceso: Planificar/Programar
+                  </h3>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-red-100 text-red-600">
+                    Requiere reevaluación
+                  </span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-neutral-500 mb-2">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:calendar-mark-linear" width="12"></iconify-icon>
+                    Planificación
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:clock-circle-linear" width="12"></iconify-icon>
+                    20 min
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] text-red-500 font-medium">
+                    Vencido hace 2 días
+                  </span>
+                </div>
+              </div>
+              <div class="pt-2 md:pt-0">
+                <button class="w-full md:w-auto px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg transition-colors whitespace-nowrap flex items-center justify-center gap-2">
+                  <span>Retomar</span>
+                  <iconify-icon icon="solar:restart-linear" width="16"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Content: Behavior (Hidden) -->
+          <div id="tab-content-behavior" class="space-y-4 hidden">
+            <!-- Item 1: Not Started -->
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 hover:shadow-md transition-all group flex flex-col md:flex-row md:items-center gap-4 opacity-80 hover:opacity-100">
+              <div class="w-10 h-10 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0">
+                <iconify-icon icon="solar:user-speak-linear" width="20"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 class="text-base font-semibold text-neutral-900">
+                    Cuando se gestiona un error - Just Culture
+                  </h3>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-neutral-100 text-neutral-500">
+                    No iniciado
+                  </span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-neutral-500">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:users-group-rounded-linear" width="12"></iconify-icon>
+                    Cultura
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:clock-circle-linear" width="12"></iconify-icon>
+                    15 min
+                  </span>
+                </div>
+              </div>
+              <div class="pt-2 md:pt-0">
+                <button class="w-full md:w-auto px-4 py-2 bg-white border border-neutral-200 hover:border-neutral-300 text-neutral-900 text-sm font-medium rounded-lg transition-colors whitespace-nowrap">
+                  Iniciar Escenario
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 2: Completed -->
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 hover:shadow-md transition-all group flex flex-col md:flex-row md:items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center shrink-0">
+                <iconify-icon icon="solar:check-circle-bold" width="20"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 class="text-base font-semibold text-neutral-900">
+                    Durante la Hora Segura Dirigida (HSD)
+                  </h3>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-green-100 text-green-700">
+                    Completado
+                  </span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-neutral-500">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:shield-check-linear" width="12"></iconify-icon>
+                    Seguridad
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:clock-circle-linear" width="12"></iconify-icon>
+                    10 min
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:star-linear" width="12"></iconify-icon>
+                    Score: 90%
+                  </span>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 border-t md:border-t-0 md:border-l border-neutral-100 pt-4 md:pt-0 md:pl-4 mt-2 md:mt-0">
+                <div class="text-right hidden md:block">
+                  <div class="text-xs text-neutral-400 mb-1">
+                    Tu calificación
+                  </div>
+                  <div class="text-lg font-bold text-neutral-900">9.0/10</div>
+                </div>
+                <button class="w-full md:w-auto px-4 py-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-900 text-sm font-medium rounded-lg transition-colors whitespace-nowrap">
+                  Repasar
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 3: In Progress -->
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 hover:shadow-md transition-all group flex flex-col md:flex-row md:items-center gap-4 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#FF5E00]"></div>
+              <div class="w-10 h-10 rounded-full bg-orange-50 text-[#FF5E00] flex items-center justify-center shrink-0">
+                <iconify-icon icon="solar:play-circle-bold" width="20"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 class="text-base font-semibold text-neutral-900">
+                    Cuando el equipo no funciona y todos luchan
+                  </h3>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-orange-50 text-orange-600 border border-orange-100">
+                    En Progreso
+                  </span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-neutral-500 mb-2">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:users-group-two-rounded-linear" width="12"></iconify-icon>
+                    Liderazgo
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:clock-circle-linear" width="12"></iconify-icon>
+                    12 min
+                  </span>
+                </div>
+                <div class="w-full max-w-xs h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-[#FF5E00] w-[40%] rounded-full"></div>
+                </div>
+              </div>
+              <div class="pt-2 md:pt-0">
+                <button class="w-full md:w-auto px-4 py-2 bg-[#171717] hover:bg-neutral-800 text-white text-sm font-medium rounded-lg transition-colors shadow-lg shadow-neutral-900/10 whitespace-nowrap flex items-center justify-center gap-2">
+                  <span>Continuar</span>
+                  <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 4: Not Started -->
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 hover:shadow-md transition-all group flex flex-col md:flex-row md:items-center gap-4 opacity-80 hover:opacity-100">
+              <div class="w-10 h-10 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0">
+                <iconify-icon icon="solar:chat-round-line-linear" width="20"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 class="text-base font-semibold text-neutral-900">
+                    Al comunicar decisiones impopulares
+                  </h3>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-neutral-100 text-neutral-500">
+                    No iniciado
+                  </span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-neutral-500">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:megaphone-linear" width="12"></iconify-icon>
+                    Comunicación
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <iconify-icon icon="solar:clock-circle-linear" width="12"></iconify-icon>
+                    10 min
+                  </span>
+                </div>
+              </div>
+              <div class="pt-2 md:pt-0">
+                <button class="w-full md:w-auto px-4 py-2 bg-white border border-neutral-200 hover:border-neutral-300 text-neutral-900 text-sm font-medium rounded-lg transition-colors whitespace-nowrap">
+                  Iniciar Escenario
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Overlay for Mobile Sidebar (Hidden by default) -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-10 hidden md:hidden glass"></div>
+
+    <script>
+      // Sidebar Toggle Logic
+      let isSidebarCollapsed = true;
+      const sidebar = document.getElementById('sidebar');
+      const sidebarIcon = document.getElementById('sidebar-toggle-icon');
+
+      function toggleSidebar() {
+          isSidebarCollapsed = !isSidebarCollapsed;
+          if (isSidebarCollapsed) {
+              sidebar.classList.remove('w-72');
+              sidebar.classList.add('w-20', 'collapsed');
+              sidebarIcon.setAttribute('icon', 'solar:double-alt-arrow-right-linear');
+          } else {
+              sidebar.classList.remove('w-20', 'collapsed');
+              sidebar.classList.add('w-72');
+              sidebarIcon.setAttribute('icon', 'solar:double-alt-arrow-left-linear');
+          }
+      }
+
+      // Language Logic
+      let currentLang = 'es';
+      const translations = {
+          es: {
+              nav_home: 'Inicio',
+              nav_eval: 'Evaluaciones',
+              nav_learning: 'Mi Aprendizaje',
+              nav_coach: 'Coach AI',
+              nav_progress: 'Mi Progreso',
+              nav_certs: 'Certificaciones',
+              nav_settings: 'Configuración',
+              nav_help: 'Ayuda y Soporte',
+              role: 'Supervisor',
+              date: 'Miércoles, 14 de Enero',
+              greeting: 'Buenos días',
+              notifications: 'Notificaciones',
+              continue_title: 'Continúa donde lo dejaste',
+              status_inprogress: 'En curso',
+              module: 'Módulo',
+              lesson_title: 'Lección 3 de 5: Gestión de Recursos',
+              continue_btn: 'Continuar Lección',
+              progress_title: 'Progreso General',
+              status_completed: 'Completado',
+              view_details: 'Ver detalles',
+              pending_title: 'Pendientes',
+              task_1_title: 'Evaluación de escenario',
+              task_1_sub: 'Gestión de errores - Just Culture',
+              task_2_title: 'Encuesta de clima',
+              task_2_sub: 'Pendiente de revisión',
+              coach_title: 'Coach AI',
+              coach_desc: 'Haz una pregunta sobre protocolos de seguridad o procedimientos.',
+              tip_title: 'Tip del día',
+              tip_text: '"Los líderes transformacionales crean un ambiente de confianza para reportar todos los errores en el sistema."',
+              tip_source: 'Playbook Cap. 2',
+              events_title: 'Próximos Eventos',
+              month: 'Feb',
+              event_name: 'Reassessment programado',
+              event_desc: 'Certificación anual de seguridad',
+              activity_title: 'Actividad Reciente',
+              act_1_text: 'Completaste',
+              act_1_bold: 'Módulo 3: Liderazgo',
+              act_1_time: 'Ayer, 4:30 PM',
+              act_2_text: 'Iniciaste sesión en dispositivo móvil',
+              act_2_time: 'Hoy, 8:15 AM'
+          },
+          en: {
+              nav_home: 'Home',
+              nav_eval: 'Evaluations',
+              nav_learning: 'My Learning',
+              nav_coach: 'Coach AI',
+              nav_progress: 'My Progress',
+              nav_certs: 'Certifications',
+              nav_settings: 'Settings',
+              nav_help: 'Help & Support',
+              role: 'Supervisor',
+              date: 'Wednesday, January 14th',
+              greeting: 'Good morning',
+              notifications: 'Notifications',
+              continue_title: 'Pick up where you left off',
+              status_inprogress: 'In progress',
+              module: 'Module',
+              lesson_title: 'Lesson 3 of 5: Resource Management',
+              continue_btn: 'Continue Lesson',
+              progress_title: 'Overall Progress',
+              status_completed: 'Completed',
+              view_details: 'View details',
+              pending_title: 'Pending Tasks',
+              task_1_title: 'Scenario Assessment',
+              task_1_sub: 'Error Management - Just Culture',
+              task_2_title: 'Climate Survey',
+              task_2_sub: 'Pending review',
+              coach_title: 'Coach AI',
+              coach_desc: 'Ask a question about safety protocols or procedures.',
+              tip_title: 'Tip of the day',
+              tip_text: '"Transformational leaders create an environment of trust to report all system errors."',
+              tip_source: 'Playbook Chap. 2',
+              events_title: 'Upcoming Events',
+              month: 'Feb',
+              event_name: 'Scheduled Reassessment',
+              event_desc: 'Annual Safety Certification',
+              activity_title: 'Recent Activity',
+              act_1_text: 'Completed',
+              act_1_bold: 'Module 3: Leadership',
+              act_1_time: 'Yesterday, 4:30 PM',
+              act_2_text: 'Logged in on mobile device',
+              act_2_time: 'Today, 8:15 AM'
+          }
+      };
+
+      function toggleLanguage() {
+          currentLang = currentLang === 'es' ? 'en' : 'es';
+          const data = translations[currentLang];
+
+          const esEl = document.getElementById('lang-es');
+          const enEl = document.getElementById('lang-en');
+
+          if (currentLang === 'es') {
+              esEl.classList.add('bg-white', 'shadow-sm');
+              esEl.classList.remove('text-neutral-400', 'opacity-50');
+              enEl.classList.remove('bg-white', 'shadow-sm');
+              enEl.classList.add('text-neutral-400', 'opacity-50');
+          } else {
+              esEl.classList.remove('bg-white', 'shadow-sm');
+              esEl.classList.add('text-neutral-400', 'opacity-50');
+              enEl.classList.add('bg-white', 'shadow-sm');
+              enEl.classList.remove('text-neutral-400', 'opacity-50');
+          }
+
+          document.querySelectorAll('[data-key]').forEach(el => {
+              const key = el.getAttribute('data-key');
+              if (data[key]) {
+                  el.textContent = data[key];
+              }
+          });
+      }
+    </script>
+
+    <script>
+      function switchTab(t){const p=document.getElementById('btn-process'),b=document.getElementById('btn-behavior'),pc=document.getElementById('tab-content-process'),bc=document.getElementById('tab-content-behavior');if(t==='process'){p.classList.add('border-[#FF5E00]','text-[#FF5E00]');p.classList.remove('border-transparent','text-neutral-500');b.classList.remove('border-[#FF5E00]','text-[#FF5E00]');b.classList.add('border-transparent','text-neutral-500');pc.classList.remove('hidden');bc.classList.add('hidden')}else{b.classList.add('border-[#FF5E00]','text-[#FF5E00]');b.classList.remove('border-transparent','text-neutral-500');p.classList.remove('border-[#FF5E00]','text-[#FF5E00]');p.classList.add('border-transparent','text-neutral-500');bc.classList.remove('hidden');pc.classList.add('hidden')}}
+    </script>
+  
+</body></html>

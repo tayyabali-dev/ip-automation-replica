@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember Ai | Login</title>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400;1,6..72,500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+body {
+background-color: #FAFAFA;
+color: #171717;
+-webkit-font-smoothing: antialiased;
+font-family: 'Inter', sans-serif;
+}
+/* Subtle Fade In */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.animate-enter {
+animation: fadeIn 0.6s ease-out forwards;
+}
+/* Transitions for View Switching */
+.view-transition {
+transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-out {
+opacity: 0;
+transform: translateY(-10px);
+pointer-events: none;
+}
+.fade-in {
+opacity: 1;
+transform: translateY(0);
+}
+/* Glass Card */
+.glass-panel {
+background: rgba(255, 255, 255, 0.8);
+backdrop-filter: blur(12px);
+border: 1px solid rgba(0, 0, 0, 0.06);
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+.text-balance { text-wrap: balance; }
+/* Minimal Scrollbar */
+::-webkit-scrollbar { width: 0px; background: transparent; }
+/* Custom Inputs */
+.input-field {
+transition: all 0.2s ease;
+}
+.input-field:focus {
+border-color: #FF5E00;
+box-shadow: 0 0 0 1px rgba(255, 94, 0, 0.1);
+outline: none;
+}
+</style>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+serif: ['Newsreader', 'serif'],
+}
+}
+}
+};
+function switchView() {
+const loginView = document.getElementById('login-view');
+const roleView = document.getElementById('role-view');
+// Hide Login
+loginView.classList.add('fade-out');
+loginView.classList.remove('opacity-100', 'translate-y-0');
+setTimeout(() => {
+loginView.classList.add('hidden');
+roleView.classList.remove('hidden');
+// Trigger reflow
+void roleView.offsetWidth;
+// Show Role View
+roleView.classList.remove('opacity-0', 'translate-y-4');
+roleView.classList.add('opacity-100', 'translate-y-0');
+}, 300);
+}
+</script></head>
+  <body class="min-h-screen overflow-x-hidden selection:bg-[#FF5E00]/10 selection:text-[#FF5E00] relative bg-[#FAFAFA] text-neutral-900 flex items-center justify-center p-4">
+    <!-- Background Animation -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+      <!-- Fainter Grid Pattern -->
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]"></div>
+
+      <!-- More Ethereal Glow -->
+      <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-[100%] bg-[#FF5E00]/5 blur-[120px]"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="relative z-10 w-full max-w-[420px]">
+      <!-- Logo Header -->
+      <div class="flex justify-center mb-8 animate-enter">
+        <div class="flex items-center gap-2">
+          <!-- Simulated Ternium Logo Mark -->
+          <div class="w-8 h-8 bg-[#FF5E00] rounded text-white flex items-center justify-center font-bold text-lg tracking-tighter">
+            T
+          </div>
+          <span class="text-xl font-semibold tracking-tight text-neutral-900">
+            Ternium
+          </span>
+        </div>
+      </div>
+
+      <!-- VIEW 1: LOGIN -->
+      <div id="login-view" class="glass-panel rounded-2xl p-8 md:p-10 shadow-xl shadow-black/[0.02] view-transition opacity-100 translate-y-0 animate-enter">
+        <!-- Header Text -->
+        <div class="text-center space-y-3 mb-8">
+          <h1 class="text-xl font-medium tracking-tight text-neutral-900">
+            AI Knowledge &amp; Safety Culture Hub
+          </h1>
+          <p class="text-sm text-neutral-500 font-serif italic text-balance leading-relaxed">
+            "Tu centro de conocimiento y desarrollo de liderazgo
+            transformacional"
+          </p>
+        </div>
+
+        <!-- Partnership Badge -->
+        <div class="flex items-center justify-center gap-2 mb-8">
+          <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100/80 border border-neutral-200/60">
+            <iconify-icon icon="solar:flame-linear" class="text-[#FF5E00] text-sm"></iconify-icon>
+            <span class="text-[10px] uppercase tracking-wider font-semibold text-neutral-600">
+              Ember AI
+            </span>
+            <span class="text-[10px] text-neutral-300 px-0.5">|</span>
+            <span class="text-[10px] uppercase tracking-wider font-semibold text-neutral-600">
+              BTS
+            </span>
+          </div>
+        </div>
+
+        <!-- SSO Button -->
+        <button onclick="switchView()" class="group w-full flex items-center justify-center gap-3 bg-[#171717] hover:bg-[#2C2C2C] text-white h-11 rounded-lg transition-all duration-300 font-medium text-sm shadow-md shadow-black/5">
+          <iconify-icon icon="solar:shield-check-linear" width="18" height="18"></iconify-icon>
+          Sign in with Ternium SSO
+          <iconify-icon icon="solar:arrow-right-linear" width="18" height="18" class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></iconify-icon>
+        </button>
+
+        <!-- Divider -->
+        <div class="relative my-6">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-neutral-200"></div>
+          </div>
+          <div class="relative flex justify-center">
+            <span class="bg-white/80 backdrop-blur px-2 text-[11px] font-medium text-neutral-400 uppercase tracking-widest">
+              Or continue with email
+            </span>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="space-y-4" onsubmit="event.preventDefault(); switchView();">
+          <div class="space-y-1.5">
+            <label for="email" class="block text-xs font-medium text-neutral-700">
+              Email address
+            </label>
+            <input type="email" id="email" name="email" placeholder="nombre.apellido@ternium.com" class="input-field block w-full rounded-lg border border-neutral-200 bg-white/50 px-3 py-2.5 text-sm placeholder:text-neutral-400 text-neutral-900">
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="password" class="block text-xs font-medium text-neutral-700">
+              Password
+            </label>
+            <input type="password" id="password" name="password" class="input-field block w-full rounded-lg border border-neutral-200 bg-white/50 px-3 py-2.5 text-sm text-neutral-900">
+          </div>
+
+          <div class="flex items-center justify-end">
+            <a href="#" class="text-xs font-medium text-neutral-500 hover:text-[#FF5E00] transition-colors">
+              Forgot password?
+            </a>
+          </div>
+
+          <button type="submit" class="w-full flex items-center justify-center bg-white border border-neutral-200 hover:border-neutral-300 text-neutral-900 h-10 rounded-lg transition-colors duration-200 font-medium text-sm">
+            Sign In
+          </button>
+        </form>
+      </div>
+
+      <!-- VIEW 2: ROLE CONFIRMATION (Hidden by default) -->
+      <div id="role-view" class="hidden glass-panel rounded-2xl p-8 md:p-10 shadow-xl shadow-black/[0.02] view-transition opacity-0 translate-y-4">
+        <!-- Welcome Header -->
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#FF5E00]/10 text-[#FF5E00] mb-4">
+            <iconify-icon icon="solar:user-id-linear" width="24" height="24"></iconify-icon>
+          </div>
+          <h1 class="text-xl font-semibold tracking-tight text-neutral-900 mb-1">
+            Confirm Your Role
+          </h1>
+          <p class="text-sm font-serif italic text-neutral-500">
+            Bienvenido, Carlos Mendoza
+          </p>
+        </div>
+
+        <!-- Role Card -->
+        <div class="bg-neutral-50/50 rounded-xl border border-neutral-200 p-4 mb-6">
+          <div class="flex items-start gap-3 mb-3">
+            <iconify-icon icon="solar:briefcase-linear" class="text-neutral-400 mt-0.5" width="16"></iconify-icon>
+            <div>
+              <h3 class="text-xs uppercase tracking-wider font-semibold text-neutral-500 mb-1">
+                Current Assignment
+              </h3>
+              <p class="text-sm font-medium text-neutral-900">
+                Supervisor de Mantenimiento - Planta Monterrey
+              </p>
+            </div>
+          </div>
+          <div class="pl-7">
+            <p class="text-xs text-neutral-600 leading-relaxed text-balance">
+              Como Supervisor, tu enfoque incluirá: ejecución de primera línea,
+              cadencias diarias, cumplimiento de seguridad, HSD (Hora Segura
+              Dirigida), y escenarios de Just Culture.
+            </p>
+          </div>
+        </div>
+
+        <!-- Inclusions List -->
+        <div class="mb-8">
+          <h4 class="text-xs font-semibold text-neutral-900 mb-3 px-1">
+            Includes access to:
+          </h4>
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-2.5 text-xs text-neutral-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-[#FF5E00] shrink-0 mt-0.5"></iconify-icon>
+              <span>12 módulos de procesos</span>
+            </li>
+            <li class="flex items-start gap-2.5 text-xs text-neutral-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-[#FF5E00] shrink-0 mt-0.5"></iconify-icon>
+              <span>6 escenarios del Playbook</span>
+            </li>
+            <li class="flex items-start gap-2.5 text-xs text-neutral-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-[#FF5E00] shrink-0 mt-0.5"></iconify-icon>
+              <span>Evaluación de RACI</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Actions -->
+        <div class="space-y-4">
+          <button class="w-full flex items-center justify-center gap-2 bg-[#171717] hover:bg-[#2C2C2C] text-white h-11 rounded-lg transition-all duration-300 font-medium text-sm shadow-md shadow-black/5" onclick="window.location.href='ternium-dash.html'">
+            Confirm
+            <iconify-icon icon="solar:arrow-right-linear" width="18" height="18"></iconify-icon>
+          </button>
+
+          <button class="w-full text-xs font-medium text-neutral-500 hover:text-[#FF5E00] transition-colors flex items-center justify-center gap-1.5 group">
+            This isn't my role
+            <iconify-icon icon="solar:question-circle-linear" class="group-hover:text-[#FF5E00] transition-colors"></iconify-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <p class="mt-8 text-center text-xs text-neutral-400">
+        Secured by Ember AI Enterprise
+      </p>
+    </main>
+  
+</body></html>

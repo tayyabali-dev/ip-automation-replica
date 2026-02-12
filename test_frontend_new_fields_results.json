@@ -1,0 +1,65 @@
+{
+  "extraction_successful": true,
+  "frontend_data": {
+    "title": "Advanced AI-Powered Document Processing System",
+    "application_number": "17/123,456",
+    "entity_status": "Small Entity",
+    "total_drawing_sheets": 5,
+    "application_type": "utility",
+    "suggested_figure": "1",
+    "correspondence_address": {
+      "name": "Blakely, Sokoloff, Taylor & Zafman LLP",
+      "address1": "1279 Oakmead Parkway",
+      "city": "Sunnyvale",
+      "state": "CA",
+      "country": "United States",
+      "postcode": "94085",
+      "phone": "(408) 720-8000",
+      "email": "patents@bstlaw.com",
+      "customer_number": "12345"
+    },
+    "inventors": [
+      {
+        "first_name": "John",
+        "middle_name": "Michael",
+        "last_name": "Smith",
+        "city": "Palo Alto",
+        "state": "CA",
+        "zip_code": "94301",
+        "country": "United States",
+        "citizenship": "United States",
+        "street_address": "123 Innovation Drive"
+      },
+      {
+        "first_name": "Sarah",
+        "middle_name": "Elizabeth",
+        "last_name": "Johnson",
+        "city": "Cambridge",
+        "state": "MA",
+        "zip_code": "02139",
+        "country": "United States",
+        "citizenship": "United States",
+        "street_address": "456 Technology Lane"
+      }
+    ],
+    "applicants": [
+      {
+        "name": "TechCorp Innovations LLC",
+        "street_address": "789 Corporate Blvd, Suite 100",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip_code": "94105",
+        "country": "United States"
+      }
+    ]
+  },
+  "xml_length": 6354,
+  "verification_checks": {
+    "Application Type": true,
+    "Suggested Figure": true,
+    "Correspondence Name": true,
+    "Correspondence Address": true,
+    "Correspondence Phone": true
+  },
+  "all_fields_verified": true
+}

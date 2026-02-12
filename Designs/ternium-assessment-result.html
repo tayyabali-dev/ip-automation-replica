@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment Results | Ember Ai</title>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+body {
+background-color: #F9FAFB; /* neutral-50 */
+color: #171717;
+-webkit-font-smoothing: antialiased;
+font-family: 'Inter', sans-serif;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+width: 6px;
+height: 6px;
+}
+::-webkit-scrollbar-track {
+background: transparent;
+}
+::-webkit-scrollbar-thumb {
+background: #e5e5e5;
+border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: #d4d4d4;
+}
+/* Sidebar Transitions */
+.sidebar-text {
+transition: opacity 0.2s, display 0.2s;
+white-space: nowrap;
+}
+.collapsed .sidebar-text {
+display: none;
+opacity: 0;
+}
+.tooltip {
+display: none;
+}
+.collapsed .group:hover .tooltip {
+display: block;
+}
+/* Animations */
+.fade-enter {
+animation: fadeIn 0.5s ease-out forwards;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.progress-bar-fill {
+transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.score-circle {
+transition: stroke-dashoffset 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+transform: rotate(-90deg);
+transform-origin: 50% 50%;
+}
+</style></head>
+  <body class="flex h-screen overflow-hidden bg-neutral-50 text-neutral-900">
+    <!-- Sidebar (Collapsed) -->
+    <aside id="sidebar" class="hidden md:flex flex-col w-20 collapsed bg-white border-r border-neutral-200 h-full flex-shrink-0 z-20 transition-all duration-300 ease-in-out relative">
+      <!-- Logo Area -->
+      <div class="h-16 flex items-center justify-between px-6 border-b border-neutral-100 overflow-hidden shrink-0">
+        <div class="flex items-center gap-2 text-[#FF5E00] whitespace-nowrap">
+          <iconify-icon icon="solar:flame-linear" width="24" height="24" stroke-width="1.5" class="flex-shrink-0"></iconify-icon>
+          <span class="font-semibold tracking-tight text-neutral-900 text-lg sidebar-text">
+            Ember Ai
+          </span>
+        </div>
+        <button onclick="toggleSidebar()" class="text-neutral-400 hover:text-neutral-900 transition-colors p-1 rounded hover:bg-neutral-100 absolute right-4">
+          <iconify-icon id="sidebar-toggle-icon" icon="solar:double-alt-arrow-right-linear" width="20" height="20"></iconify-icon>
+        </button>
+      </div>
+
+      <!-- Navigation Items -->
+      <nav class="flex-1 overflow-y-auto overflow-x-hidden py-6 px-3 space-y-1">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:home-smile-linear" width="20" height="20" class="flex-shrink-0"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text">Inicio</span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Inicio</span>
+        </a>
+
+        <!-- Active State for Assessments -->
+        <a href="#" class="flex items-center justify-between px-3 py-2.5 bg-neutral-100 text-neutral-900 rounded-lg transition-colors group relative">
+          <div class="flex items-center gap-3 overflow-hidden">
+            <iconify-icon icon="solar:clipboard-check-linear" width="20" height="20" class="flex-shrink-0 text-neutral-900"></iconify-icon>
+            <span class="text-sm font-medium sidebar-text">Evaluaciones</span>
+          </div>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Evaluaciones</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:book-bookmark-linear" width="20" height="20" class="flex-shrink-0"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text">Mi Aprendizaje</span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Mi Aprendizaje</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:chat-round-line-linear" width="20" height="20" class="flex-shrink-0 group-hover:text-[#FF5E00]"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text">Coach AI</span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Coach AI</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:chart-2-linear" width="20" height="20" class="flex-shrink-0"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text">Mi Progreso</span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Mi Progreso</span>
+        </a>
+      </nav>
+      
+      <!-- User Profile -->
+      <div class="p-4 border-t border-neutral-100 flex-shrink-0 overflow-hidden">
+        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-50 transition-colors cursor-pointer whitespace-nowrap">
+          <div class="w-10 h-10 rounded-full bg-neutral-200 flex-shrink-0 flex items-center justify-center text-neutral-600 font-semibold text-sm border border-neutral-300">CM</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative bg-[#F9FAFB]">
+      <!-- Top Header -->
+      <header class="h-16 flex items-center justify-between px-6 border-b border-neutral-200 bg-white z-10 shrink-0">
+        <div class="flex items-center gap-4">
+          <button class="md:hidden text-neutral-500 p-2 -ml-2">
+            <iconify-icon icon="solar:hamburger-menu-linear" width="24" height="24"></iconify-icon>
+          </button>
+          
+          <div class="flex items-center gap-2">
+            <a href="#" class="text-neutral-400 hover:text-neutral-600 transition-colors">
+              <iconify-icon icon="solar:arrow-left-linear" width="20"></iconify-icon>
+            </a>
+            <div class="w-px h-4 bg-neutral-200 mx-1"></div>
+            <h1 class="text-base font-semibold text-neutral-900">Resultados de Evaluación</h1>
+          </div>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <button class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
+            <iconify-icon icon="solar:share-linear" width="16"></iconify-icon>
+            Compartir
+          </button>
+          <button class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
+            <iconify-icon icon="solar:file-download-linear" width="16"></iconify-icon>
+            Descargar PDF
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Content -->
+      <div class="flex-1 overflow-y-auto">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10 fade-enter">
+          
+          <!-- Assessment Title & Meta -->
+          <div class="mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h2 class="text-2xl font-semibold tracking-tight text-neutral-900 mb-1">Evaluación de Procesos Operativos</h2>
+                <p class="text-sm text-neutral-500">Completado el 24 Oct, 2023 • 15:42</p>
+              </div>
+              <div class="flex gap-3">
+                <button class="px-4 py-2 text-sm font-medium text-neutral-600 bg-white border border-neutral-200 rounded-lg hover:bg-neutral-50 hover:text-neutral-900 transition-colors shadow-sm">
+                  Retomar Evaluación
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score Overview Card -->
+          <div class="bg-white rounded-2xl border border-neutral-200 shadow-sm p-6 md:p-8 mb-8 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+              
+              <!-- Circular Score -->
+              <div class="relative w-40 h-40 flex-shrink-0">
+                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+                  <!-- Background Circle -->
+                  <circle cx="60" cy="60" r="54" fill="none" stroke="#E5E5E5" stroke-width="8"></circle>
+                  <!-- Progress Circle (78%) -->
+                  <circle id="score-circle" cx="60" cy="60" r="54" fill="none" stroke="#10B981" stroke-width="8" stroke-linecap="round" stroke-dasharray="339.292" stroke-dashoffset="339.292" class="score-circle"></circle>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                  <span class="text-4xl font-semibold text-neutral-900 tracking-tight">78</span>
+                  <span class="text-xs font-medium text-neutral-500 uppercase tracking-wide mt-1">Puntaje</span>
+                </div>
+              </div>
+
+              <!-- Score Text Info -->
+              <div class="flex-1 text-center md:text-left space-y-4">
+                <div>
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium bg-emerald-50 text-emerald-700 mb-3 border border-emerald-100">
+                    <iconify-icon icon="solar:verified-check-linear" width="16"></iconify-icon>
+                    Aprobado
+                  </div>
+                  <h3 class="text-xl font-medium text-neutral-900">¡Buen trabajo! Has superado el umbral.</h3>
+                  <p class="text-neutral-500 text-sm mt-1 max-w-lg">
+                    Has demostrado un conocimiento sólido en la mayoría de los procesos operativos. Sin embargo, hemos identificado oportunidades clave en la fase de planificación que podrían elevar tu nivel de experto.
+                  </p>
+                </div>
+                
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+                  <button class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF5E00] hover:bg-[#e65500] text-white text-sm font-medium rounded-xl shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
+                    <iconify-icon icon="solar:route-linear" width="18"></iconify-icon>
+                    Iniciar Ruta de Aprendizaje
+                  </button>
+                  <button class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-neutral-200 text-neutral-700 text-sm font-medium rounded-xl hover:bg-neutral-50 hover:text-neutral-900 transition-colors">
+                    <iconify-icon icon="solar:eye-linear" width="18"></iconify-icon>
+                    Ver Análisis Detallado
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Details Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Column 1: Performance Breakdown -->
+            <div class="lg:col-span-2 bg-white rounded-2xl border border-neutral-200 shadow-sm p-6 md:p-8">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-medium text-neutral-900 flex items-center gap-2">
+                  <iconify-icon icon="solar:chart-square-linear" class="text-neutral-400" width="20"></iconify-icon>
+                  Desglose por Proceso
+                </h3>
+              </div>
+              
+              <div class="space-y-5">
+                <!-- Concebir -->
+                <div>
+                  <div class="flex justify-between text-sm mb-1.5">
+                    <span class="font-medium text-neutral-700">Proceso Concebir</span>
+                    <span class="font-semibold text-emerald-600">90%</span>
+                  </div>
+                  <div class="h-2 w-full bg-neutral-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full progress-bar-fill w-0" data-width="90%"></div>
+                  </div>
+                </div>
+
+                <!-- Preservar -->
+                <div>
+                  <div class="flex justify-between text-sm mb-1.5">
+                    <span class="font-medium text-neutral-700">Proceso Preservar</span>
+                    <span class="font-semibold text-emerald-600">85%</span>
+                  </div>
+                  <div class="h-2 w-full bg-neutral-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full progress-bar-fill w-0" data-width="85%"></div>
+                  </div>
+                </div>
+
+                <!-- Prevenir -->
+                <div>
+                  <div class="flex justify-between text-sm mb-1.5">
+                    <span class="font-medium text-neutral-700">Proceso Prevenir</span>
+                    <span class="font-semibold text-emerald-600">82%</span>
+                  </div>
+                  <div class="h-2 w-full bg-neutral-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full progress-bar-fill w-0" data-width="82%"></div>
+                  </div>
+                </div>
+
+                <!-- Mejorar -->
+                <div>
+                  <div class="flex justify-between text-sm mb-1.5">
+                    <span class="font-medium text-neutral-700">Proceso Mejorar</span>
+                    <span class="font-semibold text-emerald-600">75%</span>
+                  </div>
+                  <div class="h-2 w-full bg-neutral-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full progress-bar-fill w-0" data-width="75%"></div>
+                  </div>
+                </div>
+
+                <!-- Reparar -->
+                <div>
+                  <div class="flex justify-between text-sm mb-1.5">
+                    <span class="font-medium text-neutral-700">Proceso Reparar</span>
+                    <span class="font-semibold text-yellow-600">70%</span>
+                  </div>
+                  <div class="h-2 w-full bg-neutral-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-yellow-400 rounded-full progress-bar-fill w-0" data-width="70%"></div>
+                  </div>
+                </div>
+
+                <!-- Planificar (Warning) -->
+                <div>
+                  <div class="flex justify-between text-sm mb-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="font-medium text-neutral-700">Proceso Planificar</span>
+                      <iconify-icon icon="solar:danger-circle-linear" class="text-orange-500" width="16"></iconify-icon>
+                    </div>
+                    <span class="font-semibold text-orange-600">65%</span>
+                  </div>
+                  <div class="h-2 w-full bg-neutral-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-orange-500 rounded-full progress-bar-fill w-0" data-width="65%"></div>
+                  </div>
+                  <p class="text-xs text-orange-600 mt-1">Por debajo del umbral recomendado (70%)</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Column 2: Insights (Strengths & Gaps) -->
+            <div class="space-y-6">
+              
+              <!-- Strengths -->
+              <div class="bg-emerald-50/50 rounded-2xl border border-emerald-100 p-6">
+                <div class="flex items-center gap-2 mb-3 text-emerald-800">
+                  <div class="p-1.5 bg-white rounded-md shadow-sm border border-emerald-100 flex">
+                    <iconify-icon icon="solar:star-linear" width="18"></iconify-icon>
+                  </div>
+                  <h4 class="font-semibold text-sm">Fortalezas Identificadas</h4>
+                </div>
+                <p class="text-sm text-emerald-900 leading-relaxed">
+                  Excelente comprensión de los procesos de <span class="font-semibold">concepción y preservación</span> de activos. Demuestras claridad en la gestión del ciclo de vida temprano.
+                </p>
+              </div>
+
+              <!-- Gaps -->
+              <div class="bg-orange-50/50 rounded-2xl border border-orange-100 p-6">
+                <div class="flex items-center gap-2 mb-3 text-orange-800">
+                  <div class="p-1.5 bg-white rounded-md shadow-sm border border-orange-100 flex">
+                    <iconify-icon icon="solar:bolt-linear" width="18"></iconify-icon>
+                  </div>
+                  <h4 class="font-semibold text-sm">Áreas de Mejora</h4>
+                </div>
+                <p class="text-sm text-orange-900 leading-relaxed">
+                  Se recomienda fortalecer conocimientos en el proceso de <span class="font-semibold">Planificar/Programar</span>, especialmente en paradas ordinarias y programación día a día.
+                </p>
+                <button class="mt-4 w-full py-2 bg-white border border-orange-200 text-orange-700 text-xs font-medium rounded-lg hover:bg-orange-50 transition-colors shadow-sm">
+                  Ver Recursos Recomendados
+                </button>
+              </div>
+              
+              <!-- Additional Context -->
+              <div class="bg-white rounded-2xl border border-neutral-200 p-6 shadow-sm flex items-center gap-4">
+                 <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0 text-neutral-500">
+                    <iconify-icon icon="solar:users-group-rounded-linear" width="20"></iconify-icon>
+                 </div>
+                 <div>
+                   <div class="text-xs text-neutral-500 mb-0.5">Comparativa de Rol</div>
+                   <div class="text-sm font-medium text-neutral-900">Estás en el top 15%</div>
+                 </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Sidebar Toggle Logic
+      let isSidebarCollapsed = true;
+      const sidebar = document.getElementById('sidebar');
+      const sidebarIcon = document.getElementById('sidebar-toggle-icon');
+
+      function toggleSidebar() {
+          isSidebarCollapsed = !isSidebarCollapsed;
+          if (isSidebarCollapsed) {
+              sidebar.classList.remove('w-72');
+              sidebar.classList.add('w-20', 'collapsed');
+              sidebarIcon.setAttribute('icon', 'solar:double-alt-arrow-right-linear');
+          } else {
+              sidebar.classList.remove('w-20', 'collapsed');
+              sidebar.classList.add('w-72');
+              sidebarIcon.setAttribute('icon', 'solar:double-alt-arrow-left-linear');
+          }
+      }
+
+      // Animate Progress Bars & Circle on Load
+      document.addEventListener('DOMContentLoaded', () => {
+        // Animate Bars
+        setTimeout(() => {
+          document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+            bar.style.width = bar.getAttribute('data-width');
+          });
+        }, 300);
+
+        // Animate Circle
+        // Calculation: Circumference = 2 * PI * 54 ≈ 339.292
+        // 78% score means offset should be: 339.292 * (1 - 0.78) ≈ 74.64
+        setTimeout(() => {
+            const circle = document.getElementById('score-circle');
+            if(circle) {
+                // 339.292 is the full circumference defined in stroke-dasharray
+                const circumference = 339.292;
+                const percent = 78;
+                const offset = circumference - (percent / 100) * circumference;
+                circle.style.strokeDashoffset = offset;
+            }
+        }, 500);
+      });
+    </script>
+  
+</body></html>

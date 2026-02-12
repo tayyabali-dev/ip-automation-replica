@@ -1,0 +1,36 @@
+{
+  "enhanced_extraction": {
+    "title": null,
+    "application_number": null,
+    "entity_status": null,
+    "total_drawing_sheets": null,
+    "inventors": [],
+    "applicants": []
+  },
+  "legacy_extraction": {
+    "title": "Automated IP Management System",
+    "application_number": "12/345,678",
+    "entity_status": "Small Entity",
+    "total_drawing_sheets": null,
+    "inventors": [
+      {
+        "first_name": "John",
+        "middle_name": null,
+        "last_name": "Doe",
+        "citizenship": null,
+        "street_address": "123 Innovation Way",
+        "city": "San Francisco",
+        "state": "CA"
+      },
+      {
+        "first_name": "Jane",
+        "middle_name": null,
+        "last_name": "Smith",
+        "citizenship": null,
+        "street_address": "456 Tech Blvd",
+        "city": "Austin",
+        "state": "TX"
+      }
+    ]
+  }
+}

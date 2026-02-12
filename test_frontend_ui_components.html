@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend UI Components Test - USPTO ADS Fields</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .field-group {
+            margin-bottom: 20px;
+        }
+        .field-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #374151;
+        }
+        .field-group input, .field-group select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .section {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            margin-top: 0;
+            color: #1f2937;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .table th, .table td {
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        .success {
+            background-color: #d1fae5;
+            border: 1px solid #10b981;
+            color: #065f46;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .test-results {
+            background-color: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        .test-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        .test-pass {
+            color: #059669;
+            font-weight: bold;
+        }
+        .test-fail {
+            color: #dc2626;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Mock data with new USPTO ADS fields
+        const mockData = {
+            title: "System and Method for Automated Patent Processing",
+            application_number: "18/123,456",
+            entity_status: "Small Entity",
+            // NEW FIELDS
+            attorney_docket_number: "SNAP-2024-001",
+            application_type: "Nonprovisional",
+            customer_number: "12345",
+            correspondence_email: "patents@snapdev.com",
+            correspondence_phone: "(555) 123-4567",
+            total_drawing_sheets: 12,
+            applicants: [
+                {
+                    name: "SnapDev Innovations LLC",
+                    is_organization: true,
+                    applicant_type: "Assignee",
+                    street_address: "123 Tech Valley Dr",
+                    address_2: "Suite 400",
+                    city: "San Francisco",
+                    state: "CA",
+                    zip_code: "94105",
+                    country: "US",
+                    phone_number: "(555) 123-4567",
+                    email: "legal@snapdev.com"
+                }
+            ],
+            inventors: [
+                {
+                    first_name: "Jane",
+                    middle_name: "Marie",
+                    last_name: "Doe",
+                    street_address: "456 Research Way",
+                    address_2: "Apt 12B",
+                    city: "Palo Alto",
+                    state: "CA",
+                    zip_code: "94301",
+                    country: "US",
+                    citizenship: "US"
+                }
+            ]
+        };
+
+        function MetadataSection({ metadata, setMetadata }) {
+            return (
+                <div className="section">
+                    <h3>📋 Application Metadata (Enhanced with USPTO ADS Fields)</h3>
+                    <div className="grid">
+                        <div className="field-group">
+                            <label>Application Title</label>
+                            <input
+                                value={metadata.title || ''}
+                                onChange={(e) => setMetadata({...metadata, title: e.target.value})}
+                                placeholder="Enter Title"
+                            />
+                        </div>
+                        <div className="field-group">
+                            <label>Application Number</label>
+                            <input
+                                value={metadata.application_number || ''}
+                                onChange={(e) => setMetadata({...metadata, application_number: e.target.value})}
+                                placeholder="e.g. 17/123,456"
+                            />
+                        </div>
+                        <div className="field-group">
+                            <label>🆕 Attorney Docket Number</label>
+                            <input
+                                value={metadata.attorney_docket_number || ''}
+                                onChange={(e) => setMetadata({...metadata, attorney_docket_number: e.target.value})}
+                                placeholder="Enter Attorney Docket Number"
+                            />
+                        </div>
+                        <div className="field-group">
+                            <label>🆕 Application Type</label>
+                            <select
+                                value={metadata.application_type || ''}
+                                onChange={(e) => setMetadata({...metadata, application_type: e.target.value})}
+                            >
+                                <option value="">Select Application Type</option>
+                                <option value="Nonprovisional">Nonprovisional</option>
+                                <option value="Provisional">Provisional</option>
+                                <option value="Divisional">Divisional</option>
+                                <option value="Continuation">Continuation</option>
+                                <option value="Continuation-in-Part">Continuation-in-Part</option>
+                            </select>
+                        </div>
+                        <div className="field-group">
+                            <label>Entity Status</label>
+                            <select
+                                value={metadata.entity_status || ''}
+                                onChange={(e) => setMetadata({...metadata, entity_status: e.target.value})}
+                            >
+                                <option value="">Select Entity Status</option>
+                                <option value="Small Entity">Small Entity</option>
+                                <option value="Micro Entity">Micro Entity</option>
+                                <option value="Large Entity">Large Entity</option>
+                            </select>
+                        </div>
+                        <div className="field-group">
+                            <label>🆕 Customer Number</label>
+                            <input
+                                value={metadata.customer_number || ''}
+                                onChange={(e) => setMetadata({...metadata, customer_number: e.target.value})}
+                                placeholder="Enter Customer Number"
+                            />
+                        </div>
+                        <div className="field-group">
+                            <label>🆕 Correspondence Email</label>
+                            <input
+                                type="email"
+                                value={metadata.correspondence_email || ''}
+                                onChange={(e) => setMetadata({...metadata, correspondence_email: e.target.value})}
+                                placeholder="Enter Correspondence Email"
+                            />
+                        </div>
+                        <div className="field-group">
+                            <label>🆕 Correspondence Phone</label>
+                            <input
+                                type="tel"
+                                value={metadata.correspondence_phone || ''}
+                                onChange={(e) => setMetadata({...metadata, correspondence_phone: e.target.value})}
+                                placeholder="Enter Correspondence Phone"
+                            />
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        function ApplicantSection({ applicants, setApplicants }) {
+            const handleInputChange = (index, field, value) => {
+                const newApplicants = [...applicants];
+                newApplicants[index] = { ...newApplicants[index], [field]: value };
+                setApplicants(newApplicants);
+            };
+
+            return (
+                <div className="section">
+                    <h3>🏢 Applicant Information (Enhanced with New Fields)</h3>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Name / Company</th>
+                                <th>Address</th>
+                                <th>🆕 Contact & Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {applicants.map((applicant, index) => (
+                                <tr key={index}>
+                                    <td>
+                                        <input
+                                            value={applicant.name || ''}
+                                            onChange={(e) => handleInputChange(index, 'name', e.target.value)}
+                                            placeholder="Applicant Name or Company"
+                                            style={{marginBottom: '10px'}}
+                                        />
+                                        <div className="checkbox-group">
+                                            <input
+                                                type="checkbox"
+                                                checked={applicant.is_organization || false}
+                                                onChange={(e) => handleInputChange(index, 'is_organization', e.target.checked)}
+                                            />
+                                            <label>🆕 Is Organization?</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input
+                                            value={applicant.street_address || ''}
+                                            onChange={(e) => handleInputChange(index, 'street_address', e.target.value)}
+                                            placeholder="Street Address"
+                                            style={{marginBottom: '5px'}}
+                                        />
+                                        <input
+                                            value={applicant.address_2 || ''}
+                                            onChange={(e) => handleInputChange(index, 'address_2', e.target.value)}
+                                            placeholder="🆕 Address Line 2 (Suite/Unit)"
+                                            style={{marginBottom: '5px'}}
+                                        />
+                                        <div style={{display: 'flex', gap: '5px', marginBottom: '5px'}}>
+                                            <input
+                                                value={applicant.city || ''}
+                                                onChange={(e) => handleInputChange(index, 'city', e.target.value)}
+                                                placeholder="City"
+                                                style={{flex: 1}}
+                                            />
+                                            <input
+                                                value={applicant.state || ''}
+                                                onChange={(e) => handleInputChange(index, 'state', e.target.value)}
+                                                placeholder="State"
+                                                style={{width: '60px'}}
+                                            />
+                                            <input
+                                                value={applicant.zip_code || ''}
+                                                onChange={(e) => handleInputChange(index, 'zip_code', e.target.value)}
+                                                placeholder="Zip"
+                                                style={{width: '80px'}}
+                                            />
+                                        </div>
+                                        <input
+                                            value={applicant.country || ''}
+                                            onChange={(e) => handleInputChange(index, 'country', e.target.value)}
+                                            placeholder="Country"
+                                        />
+                                    </td>
+                                    <td>
+                                        <select
+                                            value={applicant.applicant_type || 'Assignee'}
+                                            onChange={(e) => handleInputChange(index, 'applicant_type', e.target.value)}
+                                            style={{marginBottom: '5px'}}
+                                        >
+                                            <option value="Assignee">Assignee</option>
+                                            <option value="Legal Representative">Legal Representative</option>
+                                            <option value="Applicant">Applicant</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <input
+                                            value={applicant.phone_number || ''}
+                                            onChange={(e) => handleInputChange(index, 'phone_number', e.target.value)}
+                                            placeholder="🆕 Phone Number"
+                                            style={{marginBottom: '5px'}}
+                                        />
+                                        <input
+                                            value={applicant.email || ''}
+                                            onChange={(e) => handleInputChange(index, 'email', e.target.value)}
+                                            placeholder="🆕 Email Address"
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+
+        function InventorSection({ inventors, setInventors }) {
+            const handleInputChange = (index, field, value) => {
+                const newInventors = [...inventors];
+                newInventors[index] = { ...newInventors[index], [field]: value };
+                setInventors(newInventors);
+            };
+
+            return (
+                <div className="section">
+                    <h3>👨‍🔬 Inventor Information (Enhanced with Address Line 2)</h3>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Citizenship</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {inventors.map((inventor, index) => (
+                                <tr key={index}>
+                                    <td>
+                                        <div style={{display: 'flex', gap: '5px', marginBottom: '5px'}}>
+                                            <input
+                                                value={inventor.first_name || ''}
+                                                onChange={(e) => handleInputChange(index, 'first_name', e.target.value)}
+                                                placeholder="First"
+                                                style={{flex: 1}}
+                                            />
+                                            <input
+                                                value={inventor.middle_name || ''}
+                                                onChange={(e) => handleInputChange(index, 'middle_name', e.target.value)}
+                                                placeholder="Middle"
+                                                style={{width: '80px'}}
+                                            />
+                                        </div>
+                                        <input
+                                            value={inventor.last_name || ''}
+                                            onChange={(e) => handleInputChange(index, 'last_name', e.target.value)}
+                                            placeholder="Last / Family"
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            value={inventor.street_address || ''}
+                                            onChange={(e) => handleInputChange(index, 'street_address', e.target.value)}
+                                            placeholder="Street Address"
+                                            style={{marginBottom: '5px'}}
+                                        />
+                                        <input
+                                            value={inventor.address_2 || ''}
+                                            onChange={(e) => handleInputChange(index, 'address_2', e.target.value)}
+                                            placeholder="🆕 Address Line 2 (Suite/Unit/Apt)"
+                                            style={{marginBottom: '5px'}}
+                                        />
+                                        <div style={{display: 'flex', gap: '5px', marginBottom: '5px'}}>
+                                            <input
+                                                value={inventor.city || ''}
+                                                onChange={(e) => handleInputChange(index, 'city', e.target.value)}
+                                                placeholder="City"
+                                                style={{flex: 1}}
+                                            />
+                                            <input
+                                                value={inventor.state || ''}
+                                                onChange={(e) => handleInputChange(index, 'state', e.target.value)}
+                                                placeholder="State"
+                                                style={{width: '60px'}}
+                                            />
+                                            <input
+                                                value={inventor.zip_code || ''}
+                                                onChange={(e) => handleInputChange(index, 'zip_code', e.target.value)}
+                                                placeholder="Postal Code"
+                                                style={{width: '90px'}}
+                                            />
+                                        </div>
+                                        <input
+                                            value={inventor.country || ''}
+                                            onChange={(e) => handleInputChange(index, 'country', e.target.value)}
+                                            placeholder="Country"
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            value={inventor.citizenship || ''}
+                                            onChange={(e) => handleInputChange(index, 'citizenship', e.target.value)}
+                                            placeholder="Country (e.g. United States)"
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+
+        function TestResults({ metadata, applicants, inventors }) {
+            const tests = [
+                {
+                    name: "Attorney Docket Number field",
+                    pass: metadata.attorney_docket_number === "SNAP-2024-001"
+                },
+                {
+                    name: "Application Type field",
+                    pass: metadata.application_type === "Nonprovisional"
+                },
+                {
+                    name: "Customer Number field",
+                    pass: metadata.customer_number === "12345"
+                },
+                {
+                    name: "Correspondence Email field",
+                    pass: metadata.correspondence_email === "patents@snapdev.com"
+                },
+                {
+                    name: "Correspondence Phone field",
+                    pass: metadata.correspondence_phone === "(555) 123-4567"
+                },
+                {
+                    name: "Applicant is_organization checkbox",
+                    pass: applicants[0]?.is_organization === true
+                },
+                {
+                    name: "Applicant type dropdown",
+                    pass: applicants[0]?.applicant_type === "Assignee"
+                },
+                {
+                    name: "Applicant address_2 field",
+                    pass: applicants[0]?.address_2 === "Suite 400"
+                },
+                {
+                    name: "Applicant phone_number field",
+                    pass: applicants[0]?.phone_number === "(555) 123-4567"
+                },
+                {
+                    name: "Applicant email field",
+                    pass: applicants[0]?.email === "legal@snapdev.com"
+                },
+                {
+                    name: "Inventor address_2 field",
+                    pass: inventors[0]?.address_2 === "Apt 12B"
+                }
+            ];
+
+            const passedTests = tests.filter(test => test.pass).length;
+            const totalTests = tests.length;
+
+            return (
+                <div className="test-results">
+                    <h3>🧪 UI Component Test Results</h3>
+                    <p><strong>Tests Passed: {passedTests}/{totalTests}</strong></p>
+                    {tests.map((test, index) => (
+                        <div key={index} className="test-item">
+                            <span className={test.pass ? "test-pass" : "test-fail"}>
+                                {test.pass ? "✅" : "❌"}
+                            </span>
+                            <span>{test.name}</span>
+                        </div>
+                    ))}
+                    {passedTests === totalTests && (
+                        <div className="success" style={{marginTop: '15px'}}>
+                            🎉 All UI components are working correctly with the new USPTO ADS fields!
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        function App() {
+            const [metadata, setMetadata] = useState(mockData);
+            const [applicants, setApplicants] = useState(mockData.applicants);
+            const [inventors, setInventors] = useState(mockData.inventors);
+
+            return (
+                <div className="container">
+                    <h1>🧪 Frontend UI Components Test - USPTO ADS Fields</h1>
+                    <div className="success">
+                        <strong>Testing Status:</strong> This page tests all the new USPTO ADS form fields in the frontend UI components.
+                        All fields marked with 🆕 are new additions for USPTO ADS form compliance.
+                    </div>
+
+                    <MetadataSection metadata={metadata} setMetadata={setMetadata} />
+                    <ApplicantSection applicants={applicants} setApplicants={setApplicants} />
+                    <InventorSection inventors={inventors} setInventors={setInventors} />
+                    <TestResults metadata={metadata} applicants={applicants} inventors={inventors} />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

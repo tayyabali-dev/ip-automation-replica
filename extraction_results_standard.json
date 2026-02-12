@@ -1,0 +1,53 @@
+{
+  "title": null,
+  "application_number": null,
+  "filing_date": null,
+  "attorney_docket_number": null,
+  "confirmation_number": null,
+  "application_type": null,
+  "entity_status": null,
+  "total_drawing_sheets": null,
+  "correspondence_info": {
+    "firm_name": null,
+    "attorney_name": null,
+    "street_address": null,
+    "address_line_2": null,
+    "city": null,
+    "state": null,
+    "postal_code": null,
+    "country": null,
+    "phone_number": null,
+    "fax_number": null,
+    "email_address": null,
+    "customer_number": null
+  },
+  "attorney_agent_info": {
+    "name": null,
+    "registration_number": null,
+    "phone_number": null,
+    "email_address": null,
+    "firm_name": null,
+    "is_attorney": true
+  },
+  "classification_info": {
+    "suggested_art_unit": null,
+    "uspc_classification": null,
+    "ipc_classification": null,
+    "cpc_classification": null
+  },
+  "domestic_priority_claims": [],
+  "foreign_priority_claims": [],
+  "inventors": [],
+  "applicants": [
+    {
+      "name": "",
+      "street_address": null,
+      "city": null,
+      "state": null,
+      "zip_code": null,
+      "country": null,
+      "customer_number": null,
+      "email_address": null
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment | Ember Ai</title>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+body {
+background-color: #F9FAFB; /* neutral-50 */
+color: #171717;
+-webkit-font-smoothing: antialiased;
+font-family: 'Inter', sans-serif;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+width: 6px;
+height: 6px;
+}
+::-webkit-scrollbar-track {
+background: transparent;
+}
+::-webkit-scrollbar-thumb {
+background: #e5e5e5;
+border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: #d4d4d4;
+}
+/* Transitions */
+.sidebar-text {
+transition: opacity 0.2s, display 0.2s;
+white-space: nowrap;
+}
+.collapsed .sidebar-text {
+display: none;
+opacity: 0;
+}
+.tooltip {
+display: none;
+}
+.collapsed .group:hover .tooltip {
+display: block;
+}
+/* Form Elements */
+.radio-checked {
+border-color: #FF5E00;
+background-color: #FFF7ED; /* orange-50 */
+box-shadow: 0 0 0 1px #FF5E00;
+}
+.radio-circle-checked {
+border-color: #FF5E00;
+background-color: #FF5E00;
+}
+.radio-circle-checked::after {
+content: '';
+display: block;
+width: 8px;
+height: 8px;
+background-color: white;
+border-radius: 50%;
+margin: 3px;
+}
+.fade-enter {
+animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(4px); }
+to { opacity: 1; transform: translateY(0); }
+}
+</style></head>
+  <body class="flex h-screen overflow-hidden bg-neutral-50 text-neutral-900">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden md:flex flex-col w-20 collapsed bg-white border-r border-neutral-200 h-full flex-shrink-0 z-20 transition-all duration-300 ease-in-out relative">
+      <!-- Logo Area -->
+      <div class="h-16 flex items-center justify-between px-6 border-b border-neutral-100 overflow-hidden shrink-0">
+        <div class="flex items-center gap-2 text-[#FF5E00] whitespace-nowrap">
+          <iconify-icon icon="solar:flame-linear" width="24" height="24" stroke-width="1.5" class="flex-shrink-0"></iconify-icon>
+          <span class="font-semibold tracking-tight text-neutral-900 text-lg sidebar-text">
+            Ember Ai
+          </span>
+        </div>
+        <button onclick="toggleSidebar()" class="text-neutral-400 hover:text-neutral-900 transition-colors p-1 rounded hover:bg-neutral-100 absolute right-4">
+          <iconify-icon id="sidebar-toggle-icon" icon="solar:double-alt-arrow-right-linear" width="20" height="20"></iconify-icon>
+        </button>
+      </div>
+
+      <!-- Navigation Items -->
+      <nav class="flex-1 overflow-y-auto overflow-x-hidden py-6 px-3 space-y-1">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:home-smile-linear" width="20" height="20" class="flex-shrink-0"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text">Inicio</span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Inicio</span>
+        </a>
+
+        <!-- Active State for Assessments -->
+        <a href="#" class="flex items-center justify-between px-3 py-2.5 bg-neutral-100 text-neutral-900 rounded-lg transition-colors group relative">
+          <div class="flex items-center gap-3 overflow-hidden">
+            <iconify-icon icon="solar:clipboard-check-linear" width="20" height="20" class="flex-shrink-0 text-neutral-900"></iconify-icon>
+            <span class="text-sm font-medium sidebar-text">Evaluaciones</span>
+          </div>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Evaluaciones</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:book-bookmark-linear" width="20" height="20" class="flex-shrink-0"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text">Mi Aprendizaje</span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Mi Aprendizaje</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:chat-round-line-linear" width="20" height="20" class="flex-shrink-0 group-hover:text-[#FF5E00]"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text">Coach AI</span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Coach AI</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:chart-2-linear" width="20" height="20" class="flex-shrink-0"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text">Mi Progreso</span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Mi Progreso</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors group relative">
+          <iconify-icon icon="solar:diploma-verified-linear" width="20" height="20" class="flex-shrink-0"></iconify-icon>
+          <span class="text-sm font-medium sidebar-text">Certificaciones</span>
+          <span class="tooltip absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-neutral-900 text-white text-xs px-2 py-1.5 rounded z-50 whitespace-nowrap shadow-sm">Certificaciones</span>
+        </a>
+      </nav>
+      
+      <!-- User Profile -->
+      <div class="p-4 border-t border-neutral-100 flex-shrink-0 overflow-hidden">
+        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-50 transition-colors cursor-pointer whitespace-nowrap">
+          <div class="w-10 h-10 rounded-full bg-neutral-200 flex-shrink-0 flex items-center justify-center text-neutral-600 font-semibold text-sm border border-neutral-300">CM</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+      <!-- Top Header / Navigation -->
+      <header class="h-16 flex items-center justify-between px-6 border-b border-neutral-200 bg-white z-10 shrink-0">
+        <div class="flex items-center gap-4">
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden text-neutral-500 p-2 -ml-2">
+            <iconify-icon icon="solar:hamburger-menu-linear" width="24" height="24"></iconify-icon>
+          </button>
+          
+          <div class="flex flex-col">
+            <h1 class="text-base font-semibold text-neutral-900">Evaluación: Playbook de Momentos Críticos de Seguridad</h1>
+            <p class="text-xs text-neutral-500 hidden sm:block">Módulo 3: Liderazgo Transformacional</p>
+          </div>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <button class="hidden sm:flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
+            <iconify-icon icon="solar:flag-linear" width="16"></iconify-icon>
+            Reportar
+          </button>
+          <div class="h-4 w-px bg-neutral-200 hidden sm:block"></div>
+          <button class="flex items-center gap-2 px-4 py-2 bg-white border border-neutral-200 rounded-lg text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 transition-colors shadow-sm">
+            <iconify-icon icon="solar:disk-linear" width="18"></iconify-icon>
+            Guardar y Salir
+          </button>
+        </div>
+      </header>
+
+      <!-- Assessment Content -->
+      <div class="flex-1 overflow-y-auto bg-neutral-50">
+        <div class="max-w-3xl mx-auto px-4 py-8 md:py-12 min-h-full flex flex-col">
+          
+          <!-- Progress & Timer -->
+          <div class="mb-8 space-y-2">
+            <div class="flex items-end justify-between text-sm mb-2">
+              <span class="font-medium text-neutral-900" id="progress-text">Escenario 1 de 5</span>
+              <div class="flex items-center gap-2 text-neutral-500 bg-white px-3 py-1 rounded-full border border-neutral-200 shadow-sm">
+                <iconify-icon icon="solar:stopwatch-linear" width="16"></iconify-icon>
+                <span class="font-mono font-medium" id="timer">14:30</span>
+              </div>
+            </div>
+            <div class="h-2 w-full bg-neutral-200 rounded-full overflow-hidden">
+              <div id="progress-bar" class="h-full bg-[#FF5E00] rounded-full transition-all duration-500 ease-out" style="width: 20%"></div>
+            </div>
+          </div>
+
+          <!-- Question Card Container -->
+          <div id="question-container" class="bg-white border border-neutral-200 rounded-2xl shadow-sm p-6 md:p-8 flex-1 flex flex-col fade-enter">
+            
+            <!-- Category Badge -->
+            <div class="mb-5">
+              <span id="question-type" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-100 tracking-wide uppercase">
+                <iconify-icon icon="solar:users-group-rounded-linear" width="14"></iconify-icon> People Moments
+              </span>
+            </div>
+
+            <!-- Scenario Title -->
+            <h2 id="question-text" class="text-xl md:text-2xl font-semibold text-neutral-900 leading-tight tracking-tight mb-4">
+              Cuando se gestiona un error - Just Culture
+            </h2>
+
+            <!-- Scenario Description Box -->
+            <div class="bg-neutral-50 border border-neutral-100 rounded-xl p-5 mb-8 text-neutral-700 text-sm leading-relaxed relative">
+              <div class="absolute top-0 left-0 w-1 h-full bg-indigo-500 rounded-l-xl"></div>
+              <p class="font-medium mb-1 text-neutral-900">Situación:</p>
+              <p>Un técnico de tu equipo cometió un error durante un procedimiento de mantenimiento que resultó en un tiempo de inactividad no planificado de 2 horas. El técnico tiene 8 años de experiencia y un historial impecable. Varios miembros del equipo presenciaron el incidente.</p>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-sm font-semibold text-neutral-900 flex items-center gap-2">
+                    <iconify-icon icon="solar:question-circle-linear" width="16" class="text-neutral-500"></iconify-icon>
+                    ¿Cómo manejas esta situación?
+                </h3>
+            </div>
+
+            <!-- Options Area -->
+            <div id="answer-area" class="space-y-3 mb-8 flex-1">
+                <!-- Option A -->
+                <div class="option-card group flex items-start gap-3 p-4 rounded-xl border border-neutral-200 cursor-pointer hover:border-neutral-300 hover:bg-neutral-50 transition-all" onclick="selectOption(this)">
+                    <div class="radio-circle mt-0.5 w-5 h-5 rounded-full border border-neutral-300 flex items-center justify-center bg-white shrink-0 group-hover:border-neutral-400 transition-colors"></div>
+                    <div class="text-sm text-neutral-700">Llamo la atención al técnico frente al equipo para establecer un precedente y dar una lección a los demás.</div>
+                </div>
+                <!-- Option B -->
+                <div class="option-card group flex items-start gap-3 p-4 rounded-xl border border-neutral-200 cursor-pointer hover:border-neutral-300 hover:bg-neutral-50 transition-all" onclick="selectOption(this)">
+                    <div class="radio-circle mt-0.5 w-5 h-5 rounded-full border border-neutral-300 flex items-center justify-center bg-white shrink-0 group-hover:border-neutral-400 transition-colors"></div>
+                    <div class="text-sm text-neutral-700">Investigo en detalle para entender la causa raíz del error, buscando si fue un fallo en el diseño del proceso o negligencia.</div>
+                </div>
+                <!-- Option C -->
+                <div class="option-card group flex items-start gap-3 p-4 rounded-xl border border-neutral-200 cursor-pointer hover:border-neutral-300 hover:bg-neutral-50 transition-all" onclick="selectOption(this)">
+                    <div class="radio-circle mt-0.5 w-5 h-5 rounded-full border border-neutral-300 flex items-center justify-center bg-white shrink-0 group-hover:border-neutral-400 transition-colors"></div>
+                    <div class="text-sm text-neutral-700">Considero que los errores son inherentes a la actividad y no tomo ninguna acción especial.</div>
+                </div>
+                <!-- Option D -->
+                <div class="option-card group flex items-start gap-3 p-4 rounded-xl border border-neutral-200 cursor-pointer hover:border-neutral-300 hover:bg-neutral-50 transition-all" onclick="selectOption(this)">
+                    <div class="radio-circle mt-0.5 w-5 h-5 rounded-full border border-neutral-300 flex items-center justify-center bg-white shrink-0 group-hover:border-neutral-400 transition-colors"></div>
+                    <div class="text-sm text-neutral-700">Documento el error y lo escalo a mi supervisor para que decida las acciones disciplinarias.</div>
+                </div>
+                <!-- Option E -->
+                <div class="option-card group flex items-start gap-3 p-4 rounded-xl border border-neutral-200 cursor-pointer hover:border-neutral-300 hover:bg-neutral-50 transition-all" onclick="selectOption(this)">
+                    <div class="radio-circle mt-0.5 w-5 h-5 rounded-full border border-neutral-300 flex items-center justify-center bg-white shrink-0 group-hover:border-neutral-400 transition-colors"></div>
+                    <div class="text-sm text-neutral-700">Creo un ambiente de confianza para que el técnico explique lo sucedido, busco aprendizajes y defino acciones correctivas con el equipo.</div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="h-px bg-neutral-100 w-full mb-6"></div>
+
+            <!-- Optional Reasoning -->
+            <div class="space-y-3">
+              <label for="reasoning" class="text-sm font-medium text-neutral-900 flex justify-between">
+                 <span>Explica tu razonamiento <span class="text-neutral-400 font-normal ml-1">(Opcional)</span></span>
+              </label>
+              <div class="relative">
+                <textarea id="reasoning" class="w-full h-24 p-3 bg-neutral-50 border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#FF5E00]/10 focus:border-[#FF5E00] transition-all resize-none" placeholder="¿Por qué elegiste esta opción? Comparte tu punto de vista..."></textarea>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Navigation -->
+          <div class="flex items-center justify-between mt-8 pb-8">
+            <button onclick="prevQuestion()" class="flex items-center gap-2 px-6 py-3 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
+              <iconify-icon icon="solar:arrow-left-linear" width="20"></iconify-icon>
+              Anterior
+            </button>
+            <button onclick="nextQuestion()" class="flex items-center gap-2 px-8 py-3 bg-[#171717] hover:bg-neutral-800 text-white text-sm font-medium rounded-xl shadow-lg shadow-neutral-900/10 transition-transform hover:-translate-y-0.5 active:translate-y-0">
+              Siguiente Escenario
+              <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Sidebar Toggle Logic
+      let isSidebarCollapsed = true;
+      const sidebar = document.getElementById('sidebar');
+      const sidebarIcon = document.getElementById('sidebar-toggle-icon');
+
+      function toggleSidebar() {
+          isSidebarCollapsed = !isSidebarCollapsed;
+          if (isSidebarCollapsed) {
+              sidebar.classList.remove('w-72');
+              sidebar.classList.add('w-20', 'collapsed');
+              sidebarIcon.setAttribute('icon', 'solar:double-alt-arrow-right-linear');
+          } else {
+              sidebar.classList.remove('w-20', 'collapsed');
+              sidebar.classList.add('w-72');
+              sidebarIcon.setAttribute('icon', 'solar:double-alt-arrow-left-linear');
+          }
+      }
+
+      function selectOption(element) {
+        // Deselect all
+        document.querySelectorAll('.option-card').forEach(el => {
+          el.classList.remove('radio-checked');
+          el.querySelector('.radio-circle').classList.remove('radio-circle-checked');
+        });
+        // Select clicked
+        element.classList.add('radio-checked');
+        element.querySelector('.radio-circle').classList.add('radio-circle-checked');
+      }
+
+      function nextQuestion() {
+        // Placeholder for navigation logic
+        alert("Navegando al siguiente escenario...");
+      }
+
+      function prevQuestion() {
+        // Placeholder for navigation logic
+      }
+
+      // Timer Logic
+      let time = 14 * 60 + 30; // 14:30
+      setInterval(() => {
+        if (time > 0) {
+          time--;
+          const m = Math.floor(time / 60).toString().padStart(2, '0');
+          const s = (time % 60).toString().padStart(2, '0');
+          document.getElementById('timer').textContent = `${m}:${s}`;
+        }
+      }, 1000);
+
+    </script>
+  
+</body></html>
