@@ -68,46 +68,48 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Login Card */}
-        <div className="glass-panel-strong rounded-2xl p-8 md:p-10 shadow-xl shadow-black/[0.02] animate-slide-up">
+        {/* Login Card — Black Card Three */}
+        <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-8 md:p-10 shadow-2xl shadow-black/30 animate-slide-up">
           {/* Header Text */}
           <div className="text-center space-y-3 mb-8">
-            <h1 className="text-xl font-medium tracking-tight text-neutral-900">
+            <h1 className="text-xl font-medium tracking-tight text-white">
               Patent Application Automation
             </h1>
-            <p className="text-sm text-neutral-500 font-serif italic text-balance leading-relaxed">
-              "Streamline your USPTO filings with AI-powered automation"
+            <p className="text-sm text-neutral-400 font-serif italic text-balance leading-relaxed">
+              &quot;Streamline your USPTO filings with AI-powered automation&quot;
             </p>
           </div>
 
           {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-1.5">
-              <label htmlFor="email" className="block text-xs font-medium text-neutral-700">
+              <label htmlFor="email" className="block text-xs font-medium text-neutral-400">
                 Email address
               </label>
-              <Input
+              <input
                 type="email"
                 id="email"
                 placeholder="user@jwhd.com"
+                className="block w-full rounded-lg border border-neutral-700 bg-neutral-800/60 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500/30 focus:outline-none transition-all"
                 {...register('email', { required: 'Email is required' })}
               />
               {errors.email && (
-                <p className="text-xs text-red-500 mt-1">{errors.email.message as string}</p>
+                <p className="text-xs text-red-400 mt-1">{errors.email.message as string}</p>
               )}
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="password" className="block text-xs font-medium text-neutral-700">
+              <label htmlFor="password" className="block text-xs font-medium text-neutral-400">
                 Password
               </label>
-              <Input
+              <input
                 type="password"
                 id="password"
+                className="block w-full rounded-lg border border-neutral-700 bg-neutral-800/60 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500/30 focus:outline-none transition-all"
                 {...register('password', { required: 'Password is required' })}
               />
               {errors.password && (
-                <p className="text-xs text-red-500 mt-1">{errors.password.message as string}</p>
+                <p className="text-xs text-red-400 mt-1">{errors.password.message as string}</p>
               )}
             </div>
 
@@ -118,15 +120,15 @@ export default function LoginPage() {
             </div>
 
             {error && (
-              <div className="p-3 text-sm text-red-600 bg-red-50 rounded-lg border border-red-100">
+              <div className="p-3 text-sm text-red-400 bg-red-500/10 rounded-lg border border-red-500/20">
                 {error}
               </div>
             )}
 
-            <Button
+            <button
               type="submit"
-              className="w-full group"
               disabled={isLoading}
+              className="w-full group flex items-center justify-center gap-2 bg-primary-500 hover:bg-primary-600 text-white h-11 rounded-lg transition-all duration-300 font-medium text-sm shadow-lg shadow-primary-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 'Signing in...'
@@ -136,7 +138,7 @@ export default function LoginPage() {
                   <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                 </>
               )}
-            </Button>
+            </button>
           </form>
         </div>
 
@@ -148,3 +150,4 @@ export default function LoginPage() {
     </div>
   );
 }
+
