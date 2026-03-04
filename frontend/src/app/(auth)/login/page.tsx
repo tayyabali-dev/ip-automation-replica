@@ -60,7 +60,7 @@ export default function LoginPage() {
           }}
         />
 
-        {/* Orange Glow */}
+        {/* Blue Glow */}
         <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-[100%] bg-primary-500/5 blur-[120px]" />
       </div>
 
