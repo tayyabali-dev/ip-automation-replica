@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from app.api.endpoints import auth, documents, jobs, applications, enhanced_applications
+from app.api import notifications
 
 api_router = APIRouter()
 api_router.include_router(auth.router, prefix="/auth", tags=["auth"])
@@ -9,3 +10,4 @@ api_router.include_router(applications.router, prefix="/applications", tags=["ap
 api_router.include_router(enhanced_applications.router, tags=["enhanced-applications"])
 from app.api.endpoints import office_actions
 api_router.include_router(office_actions.router, prefix="/office-actions", tags=["office-actions"])
+api_router.include_router(notifications.router, prefix="/notifications", tags=["notifications"])

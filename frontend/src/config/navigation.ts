@@ -5,6 +5,7 @@ import {
   ScrollText,
   Shield,
   HelpCircle,
+  Bell,
   type LucideIcon
 } from 'lucide-react';
 
@@ -43,6 +44,13 @@ export const navigationItems: NavItem[] = [
     icon: ScrollText,
     href: '/dashboard/history',
     key: 'history',
+    section: 'main',
+  },
+  {
+    label: 'Holonet',
+    icon: Bell,
+    href: '/dashboard/notifications',
+    key: 'notifications',
     section: 'main',
   },
 ];
