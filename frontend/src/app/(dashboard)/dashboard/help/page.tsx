@@ -27,10 +27,10 @@ export default function HelpPage() {
     <div className="space-y-6 animate-fade-in">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">
+        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
           Help Center
         </h1>
-        <p className="text-neutral-500 mt-1">
+        <p className="text-neutral-500 dark:text-neutral-400 mt-1">
           Find answers to common questions
         </p>
       </div>
@@ -39,7 +39,7 @@ export default function HelpPage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <HelpCircle className="w-5 h-5 text-neutral-400" />
+            <HelpCircle className="w-5 h-5 text-neutral-400 dark:text-neutral-500" />
             Frequently Asked Questions
           </CardTitle>
         </CardHeader>
@@ -49,17 +49,17 @@ export default function HelpPage() {
             return (
               <div
                 key={index}
-                className="p-4 rounded-xl bg-neutral-50 border border-neutral-100"
+                className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-100 dark:border-neutral-700"
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-white border border-neutral-200 flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-white dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 flex items-center justify-center flex-shrink-0">
                     <Icon className="w-4 h-4 text-primary-500" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-neutral-900 mb-1">
+                    <h3 className="font-medium text-neutral-900 dark:text-neutral-100 mb-1">
                       {faq.question}
                     </h3>
-                    <p className="text-sm text-neutral-500 leading-relaxed">
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -76,13 +76,13 @@ export default function HelpPage() {
           <CardTitle>Need More Help?</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-3 p-4 rounded-xl bg-primary-50 border border-primary-100">
-            <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
-              <Mail className="w-5 h-5 text-primary-600" />
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800">
+            <div className="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+              <Mail className="w-5 h-5 text-primary-600 dark:text-primary-400" />
             </div>
             <div>
-              <p className="font-medium text-neutral-900">Contact Support</p>
-              <p className="text-sm text-neutral-500">
+              <p className="font-medium text-neutral-900 dark:text-neutral-100">Contact Support</p>
+              <p className="text-sm text-neutral-500 dark:text-neutral-400">
                 Email us at support@jwhd-ip.com
               </p>
             </div>
@@ -92,3 +92,4 @@ export default function HelpPage() {
     </div>
   );
 }
+

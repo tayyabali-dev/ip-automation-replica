@@ -127,8 +127,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       <Card
         className={cn(
           "border-2 border-dashed transition-all duration-300 rounded-2xl",
-          isDragging ? "border-primary-500 bg-primary-50/50" : "border-neutral-200 hover:border-neutral-300",
-          error ? "border-red-400 bg-red-50/50" : ""
+          isDragging ? "border-primary-500 bg-primary-50/50 dark:bg-primary-900/20" : "border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600",
+          error ? "border-red-400 dark:border-red-700 bg-red-50/50 dark:bg-red-900/20" : ""
         )}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -138,20 +138,20 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         <CardContent className="flex flex-col items-center justify-center p-10 space-y-4">
           <div className="relative">
             {isLoading ? (
-              <div className="h-16 w-16 flex items-center justify-center rounded-full bg-primary-100 animate-pulse">
+              <div className="h-16 w-16 flex items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900/50 animate-pulse">
                 <Loader2 className="h-8 w-8 text-primary-500 animate-spin" />
               </div>
             ) : (
               <div className={cn(
                 "h-16 w-16 flex items-center justify-center rounded-full transition-colors",
-                error ? "bg-red-100" : isDragging ? "bg-primary-100" : "bg-neutral-100"
+                error ? "bg-red-100 dark:bg-red-900/50" : isDragging ? "bg-primary-100 dark:bg-primary-900/50" : "bg-neutral-100 dark:bg-neutral-800"
               )}>
                 {error ? (
                   <AlertCircle className="h-8 w-8 text-red-500" />
                 ) : (
                   <Upload className={cn(
                     "h-8 w-8 transition-colors",
-                    isDragging ? "text-primary-500" : "text-neutral-400"
+                    isDragging ? "text-primary-500" : "text-neutral-400 dark:text-neutral-500"
                   )} />
                 )}
               </div>
@@ -159,11 +159,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({
           </div>
 
           <div className="text-center space-y-2 w-full max-w-sm">
-            <h3 className="text-lg font-semibold text-neutral-900">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
               {isLoading ? "Processing Documents..." : "Upload Your Documents"}
             </h3>
 
-            <p className="text-sm text-neutral-500 max-w-xs mx-auto">
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 max-w-xs mx-auto">
               {error || `Drag and drop up to ${maxFiles} files here, or click to browse`}
             </p>
           </div>
@@ -193,18 +193,18 @@ export const FileUpload: React.FC<FileUploadProps> = ({
           {/* File Queue */}
           {selectedFiles.length > 0 && (
             <div className="w-full max-w-md space-y-3">
-              <h4 className="text-sm font-medium text-neutral-700 text-center">
+              <h4 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 text-center">
                 Selected Files ({selectedFiles.length}/{maxFiles})
               </h4>
               <div className="space-y-2 max-h-40 overflow-y-auto">
                 {selectedFiles.map((fileStatus, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 bg-neutral-50 rounded-xl border border-neutral-100">
-                    <div className="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-                      <FileText className="h-4 w-4 text-primary-600" />
+                  <div key={index} className="flex items-center gap-3 p-3 bg-neutral-50 dark:bg-neutral-800 rounded-xl border border-neutral-100 dark:border-neutral-700">
+                    <div className="w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center flex-shrink-0">
+                      <FileText className="h-4 w-4 text-primary-600 dark:text-primary-400" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-neutral-900 truncate">{fileStatus.file.name}</p>
-                      <p className="text-xs text-neutral-500">
+                      <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate">{fileStatus.file.name}</p>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400">
                         {formatFileSize(fileStatus.file.size)}
                       </p>
                     </div>
@@ -213,7 +213,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                         variant="ghost"
                         size="icon"
                         onClick={() => removeFile(index)}
-                        className="h-8 w-8 text-neutral-400 hover:text-red-500 hover:bg-red-50"
+                        className="h-8 w-8 text-neutral-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950"
                       >
                         <X className="h-4 w-4" />
                       </Button>
@@ -248,10 +248,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       </Card>
 
       <div className="mt-6 text-center">
-        <p className="text-xs text-neutral-400">
+        <p className="text-xs text-neutral-400 dark:text-neutral-500">
           Supported Formats: PDF, DOCX (Max 50MB each) • Up to {maxFiles} files
         </p>
       </div>
     </div>
   );
 };
+

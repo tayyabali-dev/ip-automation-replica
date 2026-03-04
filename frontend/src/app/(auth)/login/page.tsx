@@ -4,14 +4,16 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '@/contexts/AuthContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import api from '@/lib/axios';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Moon, Sun } from 'lucide-react';
 
 export default function LoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { login } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -38,7 +40,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden selection:bg-primary-500/10 selection:text-primary-500 relative bg-neutral-50 text-neutral-900 flex items-center justify-center p-4">
+    <div className="min-h-screen overflow-x-hidden selection:bg-primary-500/10 selection:text-primary-500 relative bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 flex items-center justify-center p-4">
+      {/* Theme Toggle */}
+      <button
+        onClick={toggleTheme}
+        className="fixed top-4 right-4 z-20 p-2.5 rounded-xl bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-all shadow-sm"
+      >
+        {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      </button>
+
       {/* Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0">
         {/* Grid Pattern */}
@@ -62,14 +72,14 @@ export default function LoginPage() {
             <div className="w-10 h-10 bg-primary-500 rounded-xl text-white flex items-center justify-center font-bold text-xl tracking-tighter shadow-lg shadow-primary-500/20">
               J
             </div>
-            <span className="text-xl font-semibold tracking-tight text-neutral-900">
+            <span className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
               JWHD IP
             </span>
           </div>
         </div>
 
         {/* Login Card — Black Card Three */}
-        <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-8 md:p-10 shadow-2xl shadow-black/30 animate-slide-up">
+        <div className="bg-neutral-900 dark:bg-neutral-800 border border-neutral-800 dark:border-neutral-700 rounded-2xl p-8 md:p-10 shadow-2xl shadow-black/30 animate-slide-up">
           {/* Header Text */}
           <div className="text-center space-y-3 mb-8">
             <h1 className="text-xl font-medium tracking-tight text-white">

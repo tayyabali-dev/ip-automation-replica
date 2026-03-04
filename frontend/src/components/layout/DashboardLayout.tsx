@@ -12,7 +12,7 @@ interface DashboardLayoutProps {
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <SidebarProvider>
-      <div className="flex h-screen overflow-hidden bg-neutral-50">
+      <div className="flex h-screen overflow-hidden bg-neutral-50 dark:bg-neutral-950">
         {/* Desktop Sidebar */}
         <Sidebar />
 
@@ -32,3 +32,4 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     </SidebarProvider>
   );
 }
+

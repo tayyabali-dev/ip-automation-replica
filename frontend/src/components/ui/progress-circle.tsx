@@ -21,10 +21,10 @@ const colorMap = {
 }
 
 const bgColorMap = {
-  primary: 'stroke-primary-100',
-  success: 'stroke-emerald-100',
-  warning: 'stroke-amber-100',
-  danger: 'stroke-red-100',
+  primary: 'stroke-primary-100 dark:stroke-primary-900',
+  success: 'stroke-emerald-100 dark:stroke-emerald-900',
+  warning: 'stroke-amber-100 dark:stroke-amber-900',
+  danger: 'stroke-red-100 dark:stroke-red-900',
 }
 
 export function ProgressCircle({
@@ -74,11 +74,11 @@ export function ProgressCircle({
       </svg>
       {showValue && (
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-2xl font-semibold text-neutral-900">
+          <span className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
             {Math.round(value)}%
           </span>
           {label && (
-            <span className="text-xs text-neutral-500 mt-0.5">{label}</span>
+            <span className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">{label}</span>
           )}
         </div>
       )}
@@ -87,3 +87,4 @@ export function ProgressCircle({
 }
 
 export { ProgressCircle as default }
+

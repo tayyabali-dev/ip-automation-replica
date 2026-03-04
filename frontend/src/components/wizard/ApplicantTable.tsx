@@ -38,19 +38,19 @@ export const ApplicantTable: React.FC<ApplicantTableProps> = ({ applicants, setA
 
   return (
     <div className="w-full space-y-4">
-      <div className="rounded-md border">
+      <div className="rounded-md border border-neutral-200 dark:border-neutral-700">
         <div className="w-full overflow-auto">
           <table className="w-full caption-bottom text-sm">
             <thead className="[&_tr]:border-b">
-              <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground w-[40%]">Name / Company</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground w-[55%]">Address</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground w-[50px]"></th>
+              <tr className="border-b border-neutral-200 dark:border-neutral-700 transition-colors hover:bg-neutral-50/50 dark:hover:bg-neutral-800/50">
+                <th className="h-12 px-4 text-left align-middle font-medium text-neutral-500 dark:text-neutral-400 w-[40%]">Name / Company</th>
+                <th className="h-12 px-4 text-left align-middle font-medium text-neutral-500 dark:text-neutral-400 w-[55%]">Address</th>
+                <th className="h-12 px-4 text-left align-middle font-medium text-neutral-500 dark:text-neutral-400 w-[50px]"></th>
               </tr>
             </thead>
             <tbody className="[&_tr:last-child]:border-0">
               {applicants.map((applicant, index) => (
-                <tr key={index} className="border-b transition-colors hover:bg-muted/50">
+                <tr key={index} className="border-b border-neutral-200 dark:border-neutral-700 transition-colors hover:bg-neutral-50/50 dark:hover:bg-neutral-800/50">
                   <td className="p-4 align-middle">
                     <div className="space-y-2">
                       <Input
@@ -102,7 +102,7 @@ export const ApplicantTable: React.FC<ApplicantTableProps> = ({ applicants, setA
                       variant="ghost" 
                       size="icon"
                       onClick={() => removeApplicant(index)}
-                      className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                      className="text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950"
                       disabled={applicants.length === 1}
                     >
                       <Trash2 className="h-4 w-4" />
@@ -120,3 +120,4 @@ export const ApplicantTable: React.FC<ApplicantTableProps> = ({ applicants, setA
     </div>
   );
 };
+

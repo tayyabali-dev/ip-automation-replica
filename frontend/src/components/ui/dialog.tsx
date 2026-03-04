@@ -35,7 +35,7 @@ export function Dialog({ open, onOpenChange, children }: DialogProps) {
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+        className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm"
         onClick={() => onOpenChange(false)}
       />
       {/* Dialog content */}
@@ -54,7 +54,7 @@ export function DialogContent({ className, children, ...props }: DialogContentPr
   return (
     <div
       className={cn(
-        "bg-white rounded-2xl shadow-xl border border-neutral-200 max-h-[90vh] overflow-hidden flex flex-col",
+        "bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-800 max-h-[90vh] overflow-hidden flex flex-col",
         className
       )}
       {...props}
@@ -71,7 +71,7 @@ interface DialogHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 export function DialogHeader({ className, children, ...props }: DialogHeaderProps) {
   return (
     <div
-      className={cn("flex flex-col space-y-1.5 p-6 border-b border-neutral-100", className)}
+      className={cn("flex flex-col space-y-1.5 p-6 border-b border-neutral-100 dark:border-neutral-800", className)}
       {...props}
     >
       {children}
@@ -86,10 +86,11 @@ interface DialogTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 export function DialogTitle({ className, children, ...props }: DialogTitleProps) {
   return (
     <h2
-      className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+      className={cn("text-lg font-semibold leading-none tracking-tight text-neutral-900 dark:text-neutral-100", className)}
       {...props}
     >
       {children}
     </h2>
   );
 }
+

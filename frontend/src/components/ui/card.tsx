@@ -5,13 +5,13 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const cardVariants = cva(
-  "rounded-2xl border text-neutral-900 transition-all duration-300",
+  "rounded-2xl border transition-all duration-300",
   {
     variants: {
       variant: {
-        default: "bg-white border-neutral-200 shadow-card",
-        glass: "glass-panel",
-        elevated: "bg-white border-neutral-200 shadow-lg hover:shadow-xl",
+        default: "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 shadow-card",
+        glass: "glass-panel text-neutral-900 dark:text-neutral-100",
+        elevated: "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 shadow-lg hover:shadow-xl",
         dark: "bg-neutral-900 border-neutral-800 text-white",
         accent: "bg-primary-500 border-primary-600 text-white",
       },
@@ -70,7 +70,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-neutral-500", className)}
+    className={cn("text-sm text-neutral-500 dark:text-neutral-400", className)}
     {...props}
   />
 ))
@@ -97,3 +97,4 @@ const CardFooter = React.forwardRef<
 CardFooter.displayName = "CardFooter"
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, cardVariants }
+

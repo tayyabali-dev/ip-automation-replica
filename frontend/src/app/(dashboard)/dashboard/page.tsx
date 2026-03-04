@@ -83,10 +83,10 @@ export default function DashboardPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <p className="text-neutral-500 text-sm mb-1">
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm mb-1">
             {formatDate()}
           </p>
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
             {getGreeting()}, {user?.full_name?.split(' ')[0] || 'User'}
           </h1>
         </div>
@@ -103,12 +103,12 @@ export default function DashboardPage() {
         <Card className="shadow-sm hover:shadow-md transition-shadow">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">
-                <FileText className="w-5 h-5 text-primary-600" />
+              <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center">
+                <FileText className="w-5 h-5 text-primary-600 dark:text-primary-400" />
               </div>
               <div>
-                <p className="text-2xl font-semibold text-neutral-900">{recentApplications.length}</p>
-                <p className="text-xs text-neutral-500">Applications</p>
+                <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{recentApplications.length}</p>
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">Applications</p>
               </div>
             </div>
           </CardContent>
@@ -117,12 +117,12 @@ export default function DashboardPage() {
         <Card className="shadow-sm hover:shadow-md transition-shadow">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
-                <FileSearch className="w-5 h-5 text-amber-600" />
+              <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center">
+                <FileSearch className="w-5 h-5 text-amber-600 dark:text-amber-400" />
               </div>
               <div>
-                <p className="text-2xl font-semibold text-neutral-900">{recentOfficeActions.length}</p>
-                <p className="text-xs text-neutral-500">Office Actions</p>
+                <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{recentOfficeActions.length}</p>
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">Office Actions</p>
               </div>
             </div>
           </CardContent>
@@ -131,12 +131,12 @@ export default function DashboardPage() {
         <Card className="shadow-sm hover:shadow-md transition-shadow">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
               </div>
               <div>
-                <p className="text-2xl font-semibold text-neutral-900">{totalItems}</p>
-                <p className="text-xs text-neutral-500">Total Processed</p>
+                <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{totalItems}</p>
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">Total Processed</p>
               </div>
             </div>
           </CardContent>
@@ -145,12 +145,12 @@ export default function DashboardPage() {
         <Card className="shadow-sm hover:shadow-md transition-shadow">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center">
-                <BarChart3 className="w-5 h-5 text-rose-600" />
+              <div className="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-900/30 flex items-center justify-center">
+                <BarChart3 className="w-5 h-5 text-rose-600 dark:text-rose-400" />
               </div>
               <div>
-                <p className="text-2xl font-semibold text-neutral-900">{totalRejections}</p>
-                <p className="text-xs text-neutral-500">Rejections Found</p>
+                <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{totalRejections}</p>
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">Rejections Found</p>
               </div>
             </div>
           </CardContent>
@@ -171,8 +171,8 @@ export default function DashboardPage() {
                     <FileText className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-neutral-900 mb-1">Application Data Sheets</h3>
-                    <p className="text-sm text-neutral-500 mb-4 leading-relaxed">
+                    <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Application Data Sheets</h3>
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-4 leading-relaxed">
                       Upload patent cover sheets to generate USPTO-compliant ADS forms with AI-powered extraction.
                     </p>
                     <Button asChild variant="primary" size="sm" className="group-hover:shadow-md transition-shadow">
@@ -200,11 +200,11 @@ export default function DashboardPage() {
                     <FileSearch className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-neutral-900 mb-1">Office Action Analyzer</h3>
-                    <p className="text-sm text-neutral-500 mb-4 leading-relaxed">
+                    <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Office Action Analyzer</h3>
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-4 leading-relaxed">
                       Extract rejections, deadlines, and prior art references. Generate response shells.
                     </p>
-                    <Button asChild variant="outline" size="sm" className="border-amber-200 text-amber-700 hover:bg-amber-50 hover:border-amber-300 group-hover:shadow-sm transition-shadow">
+                    <Button asChild variant="outline" size="sm" className="border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/30 hover:border-amber-300 dark:hover:border-amber-700 group-hover:shadow-sm transition-shadow">
                       <Link href="/dashboard/office-action">
                         Analyze Office Action
                         <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
@@ -222,16 +222,16 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* Recent Applications */}
         <Card className="shadow-sm">
-          <CardHeader className="pb-3 border-b border-neutral-100">
+          <CardHeader className="pb-3 border-b border-neutral-100 dark:border-neutral-800">
             <div className="flex items-center justify-between">
               <CardTitle className="text-base font-medium flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-primary-50 flex items-center justify-center">
-                  <FileText className="w-3.5 h-3.5 text-primary-600" />
+                <div className="w-6 h-6 rounded-md bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center">
+                  <FileText className="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" />
                 </div>
                 Recent Applications
               </CardTitle>
               {recentApplications.length > 0 && (
-                <Link href="/dashboard/history" className="text-xs text-primary-600 hover:text-primary-700 font-medium hover:underline">
+                <Link href="/dashboard/history" className="text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium hover:underline">
                   View all
                 </Link>
               )}
@@ -240,15 +240,15 @@ export default function DashboardPage() {
           <CardContent className="pt-3">
             {loading ? (
               <div className="flex items-center justify-center py-8">
-                <div className="w-5 h-5 border-2 border-primary-200 border-t-primary-600 rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-primary-200 dark:border-primary-800 border-t-primary-600 dark:border-t-primary-400 rounded-full animate-spin" />
               </div>
             ) : recentApplications.length === 0 ? (
               <div className="text-center py-8">
-                <div className="w-12 h-12 rounded-full bg-neutral-50 flex items-center justify-center mx-auto mb-3">
-                  <FileText className="w-6 h-6 text-neutral-300" />
+                <div className="w-12 h-12 rounded-full bg-neutral-50 dark:bg-neutral-800 flex items-center justify-center mx-auto mb-3">
+                  <FileText className="w-6 h-6 text-neutral-300 dark:text-neutral-600" />
                 </div>
-                <p className="text-sm text-neutral-500 mb-1">No applications yet</p>
-                <p className="text-xs text-neutral-400">Generate your first ADS to see it here</p>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">No applications yet</p>
+                <p className="text-xs text-neutral-400 dark:text-neutral-500">Generate your first ADS to see it here</p>
               </div>
             ) : (
               <div className="space-y-1">
@@ -256,17 +256,17 @@ export default function DashboardPage() {
                   <Link
                     key={app._id}
                     href={`/dashboard/history/${app._id}`}
-                    className="flex items-center justify-between p-3 -mx-3 rounded-lg hover:bg-neutral-50 transition-colors group"
+                    className="flex items-center justify-between p-3 -mx-3 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors group"
                   >
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-neutral-900 truncate group-hover:text-primary-600 transition-colors">
+                      <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                         {app.title || 'Untitled Application'}
                       </p>
-                      <p className="text-xs text-neutral-400 mt-0.5">
+                      <p className="text-xs text-neutral-400 dark:text-neutral-500 mt-0.5">
                         {app.application_number || 'Draft'} · {formatRelativeDate(app.created_at)}
                       </p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-300 group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-3" />
+                    <ArrowRight className="w-4 h-4 text-neutral-300 dark:text-neutral-600 group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-3" />
                   </Link>
                 ))}
               </div>
@@ -276,16 +276,16 @@ export default function DashboardPage() {
 
         {/* Recent Office Actions */}
         <Card className="shadow-sm">
-          <CardHeader className="pb-3 border-b border-neutral-100">
+          <CardHeader className="pb-3 border-b border-neutral-100 dark:border-neutral-800">
             <div className="flex items-center justify-between">
               <CardTitle className="text-base font-medium flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-amber-50 flex items-center justify-center">
-                  <FileSearch className="w-3.5 h-3.5 text-amber-600" />
+                <div className="w-6 h-6 rounded-md bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center">
+                  <FileSearch className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                 </div>
                 Recent Office Actions
               </CardTitle>
               {recentOfficeActions.length > 0 && (
-                <Link href="/dashboard/history" className="text-xs text-primary-600 hover:text-primary-700 font-medium hover:underline">
+                <Link href="/dashboard/history" className="text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium hover:underline">
                   View all
                 </Link>
               )}
@@ -294,15 +294,15 @@ export default function DashboardPage() {
           <CardContent className="pt-3">
             {loading ? (
               <div className="flex items-center justify-center py-8">
-                <div className="w-5 h-5 border-2 border-amber-200 border-t-amber-600 rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-amber-200 dark:border-amber-800 border-t-amber-600 dark:border-t-amber-400 rounded-full animate-spin" />
               </div>
             ) : recentOfficeActions.length === 0 ? (
               <div className="text-center py-8">
-                <div className="w-12 h-12 rounded-full bg-neutral-50 flex items-center justify-center mx-auto mb-3">
-                  <FileSearch className="w-6 h-6 text-neutral-300" />
+                <div className="w-12 h-12 rounded-full bg-neutral-50 dark:bg-neutral-800 flex items-center justify-center mx-auto mb-3">
+                  <FileSearch className="w-6 h-6 text-neutral-300 dark:text-neutral-600" />
                 </div>
-                <p className="text-sm text-neutral-500 mb-1">No office actions yet</p>
-                <p className="text-xs text-neutral-400">Analyze your first Office Action to see it here</p>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">No office actions yet</p>
+                <p className="text-xs text-neutral-400 dark:text-neutral-500">Analyze your first Office Action to see it here</p>
               </div>
             ) : (
               <div className="space-y-1">
@@ -310,24 +310,24 @@ export default function DashboardPage() {
                   <Link
                     key={oa._id}
                     href={`/dashboard/office-action/${oa._id}/analysis`}
-                    className="flex items-center justify-between p-3 -mx-3 rounded-lg hover:bg-neutral-50 transition-colors group"
+                    className="flex items-center justify-between p-3 -mx-3 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors group"
                   >
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-neutral-900 truncate group-hover:text-amber-600 transition-colors">
+                      <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                         {oa.application_number || oa.title_of_invention || 'Office Action'}
                       </p>
                       <div className="flex items-center gap-2 mt-0.5">
-                        <p className="text-xs text-neutral-400">
+                        <p className="text-xs text-neutral-400 dark:text-neutral-500">
                           {oa.office_action_type || 'Analysis'} · {formatRelativeDate(oa.created_at || '')}
                         </p>
                         {oa.total_rejections > 0 && (
-                          <span className="inline-flex items-center text-[10px] font-medium text-amber-700 bg-amber-50 border border-amber-100 px-1.5 py-0.5 rounded">
+                          <span className="inline-flex items-center text-[10px] font-medium text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/30 border border-amber-100 dark:border-amber-800 px-1.5 py-0.5 rounded">
                             {oa.total_rejections} rejection{oa.total_rejections !== 1 ? 's' : ''}
                           </span>
                         )}
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-300 group-hover:text-amber-500 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-3" />
+                    <ArrowRight className="w-4 h-4 text-neutral-300 dark:text-neutral-600 group-hover:text-amber-500 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-3" />
                   </Link>
                 ))}
               </div>
@@ -338,13 +338,13 @@ export default function DashboardPage() {
 
       {/* Getting Started (only shown when no activity) */}
       {totalItems === 0 && !loading && (
-        <Card className="border-dashed border-2 border-neutral-200 bg-neutral-50/50 shadow-none">
+        <Card className="border-dashed border-2 border-neutral-200 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-800/30 shadow-none">
           <CardContent className="p-8 text-center">
-            <div className="w-14 h-14 rounded-full bg-primary-50 flex items-center justify-center mx-auto mb-4">
+            <div className="w-14 h-14 rounded-full bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-4">
               <Sparkles className="w-7 h-7 text-primary-500" />
             </div>
-            <h3 className="font-semibold text-neutral-900 mb-1">Get Started with IP Automation</h3>
-            <p className="text-sm text-neutral-500 mb-5 max-w-sm mx-auto">
+            <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Get Started with IP Automation</h3>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-5 max-w-sm mx-auto">
               Choose a feature above to begin automating your patent workflow
             </p>
             <div className="flex items-center justify-center gap-3">
@@ -367,3 +367,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+
