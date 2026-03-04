@@ -23,6 +23,27 @@ _This file tracks development progress. Update it after completing each feature.
   - **Root layout**: Updated metadata title to "Galactic IP — Patent Bureau"
   - **globals.css**: Star Wars themed scrollbars, glow effects (`.text-glow-yellow`, `.text-glow-blue`, `.text-glow-red`), `.border-glow`, `.starfield` classes, holographic grid pattern
 
+- **Notifications System (Holonet Transmissions)**
+  - **Backend API**: Full CRUD endpoints at `/api/v1/notifications/`
+    - GET `/` - List notifications with filters (read/unread)
+    - POST `/` - Create new notification
+    - GET `/unread-count` - Get count of unread notifications
+    - PUT `/{id}` - Mark as read/unread
+    - POST `/mark-all-read` - Mark all as read
+    - DELETE `/{id}` - Delete single notification
+    - DELETE `/` - Delete all notifications
+  - **Data model**: `backend/app/models/notification.py` with title, message, type (info/warning/success/error/transmission), priority (low/medium/high/urgent), timestamps
+  - **Frontend page**: `/dashboard/notifications` - Star Wars themed "Holonet Transmissions"
+    - Create dummy notifications with form (title, message, type, priority)
+    - List view with filter tabs (all/unread/read)
+    - Color-coded notification cards by type (green for success, red for error, yellow for warning, blue for transmission)
+    - Priority badges with lightsaber colors
+    - Mark as read/unread actions
+    - Delete individual or all notifications
+    - Real-time unread count display
+  - **Navigation**: Added "Holonet" to main nav with Bell icon
+  - **API client**: `frontend/src/lib/api/notifications.ts` with all CRUD operations
+
 ## In Progress
 
 - (none)
