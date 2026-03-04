@@ -1,9 +1,9 @@
 import {
-  Home,
-  FilePlus,
-  FileSearch,
-  Clock,
-  Settings,
+  Crosshair,
+  Swords,
+  Radar,
+  ScrollText,
+  Shield,
   HelpCircle,
   type LucideIcon
 } from 'lucide-react';
@@ -18,29 +18,29 @@ export interface NavItem {
 
 export const navigationItems: NavItem[] = [
   {
-    label: 'Dashboard',
-    icon: Home,
+    label: 'Command Center',
+    icon: Crosshair,
     href: '/dashboard',
     key: 'dashboard',
     section: 'main',
   },
   {
-    label: 'New Application',
-    icon: FilePlus,
+    label: 'New Transmission',
+    icon: Swords,
     href: '/dashboard/new-application',
     key: 'new-application',
     section: 'main',
   },
   {
-    label: 'Office Actions',
-    icon: FileSearch,
+    label: 'Scan Intel',
+    icon: Radar,
     href: '/dashboard/office-action',
     key: 'office-action',
     section: 'main',
   },
   {
-    label: 'History',
-    icon: Clock,
+    label: 'Holocron Archives',
+    icon: ScrollText,
     href: '/dashboard/history',
     key: 'history',
     section: 'main',
@@ -49,14 +49,14 @@ export const navigationItems: NavItem[] = [
 
 export const bottomNavItems: NavItem[] = [
   {
-    label: 'Settings',
-    icon: Settings,
+    label: 'Ship Systems',
+    icon: Shield,
     href: '/dashboard/settings',
     key: 'settings',
     section: 'bottom',
   },
   {
-    label: 'Help',
+    label: 'Jedi Council',
     icon: HelpCircle,
     href: '/dashboard/help',
     key: 'help',

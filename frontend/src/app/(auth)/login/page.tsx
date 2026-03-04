@@ -7,8 +7,10 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { StarfieldBackground } from '@/components/ui/StarfieldBackground';
+import { ImperialLogo } from '@/components/ui/ImperialLogo';
 import api from '@/lib/axios';
-import { ArrowRight, Moon, Sun } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 
 export default function LoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -33,75 +35,80 @@ export default function LoginPage() {
 
       login(response.data.access_token, response.data.user, response.data.refresh_token);
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Failed to login. Please check your credentials.');
+      setError(err.response?.data?.detail || 'Access denied. The Force is not with you.');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden selection:bg-primary-500/10 selection:text-primary-500 relative bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 flex items-center justify-center p-4">
-      {/* Theme Toggle */}
-      <button
-        onClick={toggleTheme}
-        className="fixed top-4 right-4 z-20 p-2.5 rounded-xl bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-all shadow-sm"
-      >
-        {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-      </button>
+    <div className="min-h-screen overflow-x-hidden selection:bg-primary-500/20 selection:text-primary-500 relative bg-[#090A0F] text-neutral-100 flex items-center justify-center p-4">
+      {/* Starfield Background */}
+      <StarfieldBackground />
 
       {/* Background Elements */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        {/* Grid Pattern */}
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        {/* Holographic grid */}
         <div
           className="absolute inset-0 bg-grid-pattern"
           style={{
-            maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 100%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 100%)',
+            maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 80%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 80%)',
           }}
         />
-
-        {/* Blue Glow */}
-        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-[100%] bg-primary-500/5 blur-[120px]" />
       </div>
 
       {/* Main Container */}
       <main className="relative z-10 w-full max-w-[420px]">
         {/* Logo Header */}
         <div className="flex justify-center mb-8 animate-fade-in">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary-500 rounded-xl text-white flex items-center justify-center font-bold text-xl tracking-tighter shadow-lg shadow-primary-500/20">
-              J
+          <div className="flex flex-col items-center gap-3">
+            <div className="relative">
+              <ImperialLogo size={56} className="text-primary-500 drop-shadow-[0_0_15px_rgba(255,232,31,0.4)]" />
+              {/* Glow ring */}
+              <div className="absolute inset-0 rounded-full bg-primary-500/10 blur-xl scale-150" />
             </div>
-            <span className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-              JWHD IP
-            </span>
+            <div className="text-center">
+              <span className="text-xl font-bold tracking-[0.3em] uppercase text-primary-500 text-glow-yellow">
+                Galactic IP
+              </span>
+              <p className="text-[10px] tracking-[0.5em] uppercase text-neutral-500 mt-1">
+                Patent Bureau
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Login Card — Black Card Three */}
-        <div className="bg-neutral-900 dark:bg-neutral-800 border border-neutral-800 dark:border-neutral-700 rounded-2xl p-8 md:p-10 shadow-2xl shadow-black/30 animate-slide-up">
+        {/* Login Card */}
+        <div className="relative bg-[#0d0e14]/90 backdrop-blur-xl border border-primary-500/10 rounded-2xl p-8 md:p-10 shadow-2xl shadow-black/50 animate-slide-up border-glow">
+          {/* Corner accents */}
+          <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary-500/30 rounded-tl-2xl" />
+          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary-500/30 rounded-tr-2xl" />
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary-500/30 rounded-bl-2xl" />
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary-500/30 rounded-br-2xl" />
+
           {/* Header Text */}
           <div className="text-center space-y-3 mb-8">
             <h1 className="text-xl font-medium tracking-tight text-white">
-              Patent Application Automation
+              Access the Holonet
             </h1>
             <p className="text-sm text-neutral-400 font-serif italic text-balance leading-relaxed">
-              &quot;Streamline your USPTO filings with AI-powered automation&quot;
+              &quot;The Force shall guide your patent filings across the galaxy&quot;
             </p>
           </div>
 
           {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-1.5">
-              <label htmlFor="email" className="block text-xs font-medium text-neutral-400">
-                Email address
+              <label htmlFor="email" className="block text-xs font-medium text-primary-500/70 uppercase tracking-wider">
+                Imperial ID
               </label>
               <input
                 type="email"
                 id="email"
-                placeholder="user@jwhd.com"
-                className="block w-full rounded-lg border border-neutral-700 bg-neutral-800/60 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500/30 focus:outline-none transition-all"
-                {...register('email', { required: 'Email is required' })}
+                placeholder="agent@galactic-ip.gov"
+                className="block w-full rounded-lg border border-primary-500/15 bg-black/40 px-3 py-2.5 text-sm text-white placeholder:text-neutral-600 focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/20 focus:outline-none transition-all"
+                {...register('email', { required: 'Imperial ID is required' })}
               />
               {errors.email && (
                 <p className="text-xs text-red-400 mt-1">{errors.email.message as string}</p>
@@ -109,14 +116,14 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="password" className="block text-xs font-medium text-neutral-400">
-                Password
+              <label htmlFor="password" className="block text-xs font-medium text-primary-500/70 uppercase tracking-wider">
+                Access Code
               </label>
               <input
                 type="password"
                 id="password"
-                className="block w-full rounded-lg border border-neutral-700 bg-neutral-800/60 px-3 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500/30 focus:outline-none transition-all"
-                {...register('password', { required: 'Password is required' })}
+                className="block w-full rounded-lg border border-primary-500/15 bg-black/40 px-3 py-2.5 text-sm text-white placeholder:text-neutral-600 focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/20 focus:outline-none transition-all"
+                {...register('password', { required: 'Access code is required' })}
               />
               {errors.password && (
                 <p className="text-xs text-red-400 mt-1">{errors.password.message as string}</p>
@@ -125,7 +132,7 @@ export default function LoginPage() {
 
             <div className="flex items-center justify-end">
               <a href="#" className="text-xs font-medium text-neutral-500 hover:text-primary-500 transition-colors">
-                Forgot password?
+                Lost your clearance?
               </a>
             </div>
 
@@ -138,13 +145,16 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full group flex items-center justify-center gap-2 bg-primary-500 hover:bg-primary-600 text-white h-11 rounded-lg transition-all duration-300 font-medium text-sm shadow-lg shadow-primary-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full group flex items-center justify-center gap-2 bg-primary-500 hover:bg-primary-600 text-black h-11 rounded-lg transition-all duration-300 font-bold text-sm shadow-lg shadow-primary-500/20 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider hover:shadow-primary-500/40"
             >
               {isLoading ? (
-                'Signing in...'
+                <span className="flex items-center gap-2">
+                  <Zap className="w-4 h-4 animate-pulse" />
+                  Establishing Uplink...
+                </span>
               ) : (
                 <>
-                  Sign In
+                  Enter the Force
                   <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                 </>
               )}
@@ -153,11 +163,10 @@ export default function LoginPage() {
         </div>
 
         {/* Footer */}
-        <p className="mt-8 text-center text-xs text-neutral-400">
-          JWHD IP Automation Platform
+        <p className="mt-8 text-center text-xs text-neutral-600">
+          ⬡ Galactic IP Automation — A long time ago in a galaxy far, far away...
         </p>
       </main>
     </div>
   );
 }
-

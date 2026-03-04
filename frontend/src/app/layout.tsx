@@ -19,8 +19,8 @@ const newsreader = Newsreader({
 });
 
 export const metadata = {
-  title: "JWHD IP Automation",
-  description: "Automated patent application data processing",
+  title: "Galactic IP — Patent Bureau",
+  description: "A long time ago in a galaxy far, far away... patent automation was born",
 };
 
 export default function RootLayout({

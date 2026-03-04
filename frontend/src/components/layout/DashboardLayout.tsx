@@ -4,6 +4,7 @@ import React from 'react';
 import { Sidebar } from './Sidebar';
 import { MobileHeader } from './MobileHeader';
 import { SidebarProvider } from '@/contexts/SidebarContext';
+import { StarfieldBackground } from '@/components/ui/StarfieldBackground';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -12,12 +13,15 @@ interface DashboardLayoutProps {
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <SidebarProvider>
-      <div className="flex h-screen overflow-hidden bg-neutral-50 dark:bg-neutral-950">
+      <div className="flex h-screen overflow-hidden bg-[#090A0F] text-neutral-100">
+        {/* Starfield Background */}
+        <StarfieldBackground />
+
         {/* Desktop Sidebar */}
         <Sidebar />
 
         {/* Main Content Area */}
-        <main className="flex-1 flex flex-col h-full overflow-hidden">
+        <main className="flex-1 flex flex-col h-full overflow-hidden relative z-10">
           {/* Mobile Header */}
           <MobileHeader />
 
@@ -32,4 +36,3 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     </SidebarProvider>
   );
 }
-
