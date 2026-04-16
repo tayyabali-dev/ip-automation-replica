@@ -19,35 +19,35 @@ export interface NavItem {
 
 export const navigationItems: NavItem[] = [
   {
-    label: 'Batcave',
+    label: 'Fortress',
     icon: Crosshair,
     href: '/dashboard',
     key: 'dashboard',
     section: 'main',
   },
   {
-    label: 'New Case',
+    label: 'New Mission',
     icon: Swords,
     href: '/dashboard/new-application',
     key: 'new-application',
     section: 'main',
   },
   {
-    label: 'Crime Analysis',
+    label: 'Threat Scan',
     icon: Radar,
     href: '/dashboard/office-action',
     key: 'office-action',
     section: 'main',
   },
   {
-    label: 'Case Files',
+    label: 'Archives',
     icon: ScrollText,
     href: '/dashboard/history',
     key: 'history',
     section: 'main',
   },
   {
-    label: 'Bat Signal',
+    label: 'Distress Calls',
     icon: Bell,
     href: '/dashboard/notifications',
     key: 'notifications',
@@ -57,14 +57,14 @@ export const navigationItems: NavItem[] = [
 
 export const bottomNavItems: NavItem[] = [
   {
-    label: 'Batcomputer',
+    label: 'Systems',
     icon: Shield,
     href: '/dashboard/settings',
     key: 'settings',
     section: 'bottom',
   },
   {
-    label: 'Alfred',
+    label: 'Jor-El',
     icon: HelpCircle,
     href: '/dashboard/help',
     key: 'help',

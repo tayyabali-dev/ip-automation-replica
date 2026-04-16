@@ -11,16 +11,16 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          50: '#FFF9E6',
-          100: '#FFF3CC',
-          200: '#FFE799',
-          300: '#FFDB66',
-          400: '#FFCF33',
-          500: '#FDB913', // Batman Yellow (Bat Signal)
-          600: '#E6A711',
-          700: '#CC940F',
-          800: '#B3820D',
-          900: '#99700B',
+          50: '#FFE5E8',
+          100: '#FFCCD1',
+          200: '#FF99A3',
+          300: '#FF6675',
+          400: '#FF3347',
+          500: '#CE1126', // Superman Red
+          600: '#B50E21',
+          700: '#9C0C1C',
+          800: '#830917',
+          900: '#6A0712',
         },
         neutral: {
           50: '#F9FAFB',
@@ -35,17 +35,17 @@ const config: Config = {
           900: '#171717',
           950: '#0a0a0a',
         },
-        // Batman/Gotham accents
-        batman: {
-          yellow: '#FDB913',    // Bat Signal yellow
-          black: '#0A0A0A',     // Batman black
-          gray: '#2D2D2D',      // Batsuit gray
-          darkBlue: '#1A1F2E',  // Gotham night
-          steel: '#5A6C7D',     // Steel/tech
-          gold: '#D4AF37',      // Gold accent
+        // Superman/Metropolis accents
+        superman: {
+          red: '#CE1126',       // Superman red
+          blue: '#0476F2',      // Superman blue
+          yellow: '#FCD116',    // S shield yellow
+          gold: '#FFD700',      // Gold accent
+          sky: '#87CEEB',       // Sky blue
+          white: '#FFFFFF',     // Clean white
         },
-        gotham: '#1A1F2E',
-        batSignal: '#FDB913',
+        metropolis: '#0476F2',
+        sShield: '#FCD116',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -58,10 +58,10 @@ const config: Config = {
       boxShadow: {
         'soft': '0 2px 10px -4px rgba(0, 0, 0, 0.05)',
         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-        'bat-signal': '0 0 20px rgba(253, 185, 19, 0.4), 0 0 40px rgba(253, 185, 19, 0.2)',
-        'bat-glow': '0 0 15px rgba(253, 185, 19, 0.5), 0 0 30px rgba(253, 185, 19, 0.3)',
-        'gotham-glow': '0 0 15px rgba(26, 31, 46, 0.6)',
-        'dark-steel': '0 0 10px rgba(90, 108, 125, 0.3)',
+        'super-glow': '0 0 20px rgba(206, 17, 38, 0.4), 0 0 40px rgba(206, 17, 38, 0.2)',
+        'hero-glow': '0 0 15px rgba(4, 118, 242, 0.5), 0 0 30px rgba(4, 118, 242, 0.3)',
+        'hope-glow': '0 0 15px rgba(252, 209, 22, 0.6), 0 0 30px rgba(252, 209, 22, 0.4)',
+        'metropolis-glow': '0 0 10px rgba(4, 118, 242, 0.3)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
