@@ -19,8 +19,8 @@ const newsreader = Newsreader({
 });
 
 export const metadata = {
-  title: "Daily Planet IP — Metropolis Patents",
-  description: "Truth, Justice, and Patent Innovation. Protecting ideas with the power of hope.",
+  title: "Wayne IP — Gotham Patents",
+  description: "The Dark Knight of Patent Automation. Protecting innovation in Gotham and beyond.",
 };
 
 export default function RootLayout({

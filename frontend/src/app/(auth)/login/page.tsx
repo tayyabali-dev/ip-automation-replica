@@ -7,7 +7,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { SupermanLogo } from '@/components/ui/SupermanLogo';
+import { BatmanLogo } from '@/components/ui/BatmanLogo';
 import api from '@/lib/axios';
 import { ArrowRight, Zap } from 'lucide-react';
 
@@ -34,23 +34,22 @@ export default function LoginPage() {
 
       login(response.data.access_token, response.data.user, response.data.refresh_token);
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Access denied. Truth, justice, and innovation await.');
+      setError(err.response?.data?.detail || 'Access denied. Gotham needs you.');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden selection:bg-primary-500/20 selection:text-primary-500 relative text-neutral-800 dark:text-neutral-100 flex items-center justify-center p-4">
-      {/* Metropolis Sky Background */}
-      <div className="metropolis-sky">
-        <div className="flying-hero" />
-        <div className="hope-shine" />
+    <div className="min-h-screen overflow-x-hidden selection:bg-primary-500/20 selection:text-primary-500 relative text-neutral-200 flex items-center justify-center p-4">
+      {/* Gotham City Background */}
+      <div className="gotham-city">
+        <div className="city-lights" />
+        <div className="bat-signal-glow" />
       </div>
 
       {/* Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
-        {/* Tech grid */}
         <div
           className="absolute inset-0 bg-grid-pattern"
           style={{
@@ -66,51 +65,47 @@ export default function LoginPage() {
         <div className="flex justify-center mb-8 animate-fade-in">
           <div className="flex flex-col items-center gap-3">
             <div className="relative">
-              <SupermanLogo size={56} className="text-primary-500 drop-shadow-[0_0_20px_rgba(206,17,38,0.6)]" />
-              {/* Glow ring */}
+              <BatmanLogo size={56} className="text-primary-500 drop-shadow-[0_0_20px_rgba(253,185,19,0.6)]" />
               <div className="absolute inset-0 rounded-full bg-primary-500/10 blur-xl scale-150" />
             </div>
             <div className="text-center">
-              <span className="text-xl font-bold tracking-[0.3em] uppercase text-primary-500 text-glow-super">
-                Daily Planet IP
+              <span className="text-xl font-bold tracking-[0.3em] uppercase text-primary-500 text-glow-bat">
+                Wayne IP
               </span>
-              <p className="text-[10px] tracking-[0.5em] uppercase text-neutral-500 dark:text-neutral-400 mt-1">
-                Metropolis Division
+              <p className="text-[10px] tracking-[0.5em] uppercase text-neutral-500 mt-1">
+                Gotham Patents
               </p>
             </div>
           </div>
         </div>
 
         {/* Login Card */}
-        <div className="relative bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-xl border border-primary-500/20 rounded-2xl p-8 md:p-10 shadow-2xl shadow-primary-500/10 animate-slide-up border-glow">
-          {/* Corner accents - Superman style */}
+        <div className="relative bg-[#1a1a1a]/95 backdrop-blur-xl border border-primary-500/20 rounded-2xl p-8 md:p-10 shadow-2xl shadow-black/80 animate-slide-up border-glow">
           <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary-500/50 rounded-tl-2xl" />
           <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary-500/50 rounded-tr-2xl" />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-metropolis/30 rounded-bl-2xl" />
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-metropolis/30 rounded-br-2xl" />
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary-500/30 rounded-bl-2xl" />
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary-500/30 rounded-br-2xl" />
 
-          {/* Header Text */}
           <div className="text-center space-y-3 mb-8">
-            <h1 className="text-xl font-medium tracking-tight text-neutral-900 dark:text-white">
-              Hero Access Portal
+            <h1 className="text-xl font-medium tracking-tight text-white">
+              Access Batcomputer
             </h1>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 font-serif italic text-balance leading-relaxed">
-              &quot;There is a superhero in all of us&quot;
+            <p className="text-sm text-neutral-400 font-serif italic text-balance leading-relaxed">
+              &quot;It's not who I am underneath, but what I do that defines me&quot;
             </p>
           </div>
 
-          {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-1.5">
               <label htmlFor="email" className="block text-xs font-medium text-primary-500 uppercase tracking-wider">
-                Reporter ID
+                Agent ID
               </label>
               <input
                 type="email"
                 id="email"
-                placeholder="clark@dailyplanet.com"
-                className="block w-full rounded-lg border border-primary-500/25 bg-white dark:bg-black/60 px-3 py-2.5 text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:border-primary-500/60 focus:ring-2 focus:ring-primary-500/25 focus:outline-none transition-all"
-                {...register('email', { required: 'Reporter ID is required' })}
+                placeholder="bruce@wayneenterprises.com"
+                className="block w-full rounded-lg border border-primary-500/25 bg-black/60 px-3 py-2.5 text-sm text-white placeholder:text-neutral-600 focus:border-primary-500/60 focus:ring-2 focus:ring-primary-500/25 focus:outline-none transition-all"
+                {...register('email', { required: 'Agent ID is required' })}
               />
               {errors.email && (
                 <p className="text-xs text-red-400 mt-1">{errors.email.message as string}</p>
@@ -119,14 +114,14 @@ export default function LoginPage() {
 
             <div className="space-y-1.5">
               <label htmlFor="password" className="block text-xs font-medium text-primary-500 uppercase tracking-wider">
-                Security Code
+                Access Code
               </label>
               <input
                 type="password"
                 id="password"
                 placeholder="••••••••"
-                className="block w-full rounded-lg border border-primary-500/25 bg-white dark:bg-black/60 px-3 py-2.5 text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:border-primary-500/60 focus:ring-2 focus:ring-primary-500/25 focus:outline-none transition-all"
-                {...register('password', { required: 'Security code is required' })}
+                className="block w-full rounded-lg border border-primary-500/25 bg-black/60 px-3 py-2.5 text-sm text-white placeholder:text-neutral-600 focus:border-primary-500/60 focus:ring-2 focus:ring-primary-500/25 focus:outline-none transition-all"
+                {...register('password', { required: 'Access code is required' })}
               />
               {errors.password && (
                 <p className="text-xs text-red-400 mt-1">{errors.password.message as string}</p>
@@ -134,8 +129,8 @@ export default function LoginPage() {
             </div>
 
             <div className="flex items-center justify-end">
-              <a href="#" className="text-xs font-medium text-neutral-500 dark:text-neutral-400 hover:text-primary-500 transition-colors">
-                Forgot your code?
+              <a href="#" className="text-xs font-medium text-neutral-500 hover:text-primary-500 transition-colors">
+                Forgot your access code?
               </a>
             </div>
 
@@ -148,16 +143,16 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full group flex items-center justify-center gap-2 bg-primary-500 hover:bg-primary-600 text-white h-11 rounded-lg transition-all duration-300 font-bold text-sm shadow-[0_0_20px_rgba(206,17,38,0.4)] disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider hover:shadow-[0_0_30px_rgba(206,17,38,0.6)]"
+              className="w-full group flex items-center justify-center gap-2 bg-primary-500 hover:bg-primary-600 text-black h-11 rounded-lg transition-all duration-300 font-bold text-sm shadow-[0_0_20px_rgba(253,185,19,0.4)] disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider hover:shadow-[0_0_30px_rgba(253,185,19,0.6)]"
             >
               {isLoading ? (
                 <span className="flex items-center gap-2">
                   <Zap className="w-4 h-4 animate-pulse" />
-                  Taking Flight...
+                  Accessing System...
                 </span>
               ) : (
                 <>
-                  Save the Day
+                  Enter Gotham
                   <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                 </>
               )}
@@ -165,9 +160,8 @@ export default function LoginPage() {
           </form>
         </div>
 
-        {/* Footer */}
-        <p className="mt-8 text-center text-xs text-neutral-500 dark:text-neutral-600">
-          🦸 Daily Planet IP — Truth, Justice, and Patent Innovation
+        <p className="mt-8 text-center text-xs text-neutral-600">
+          🦇 Wayne Enterprises IP Division — The Dark Knight of Patent Automation
         </p>
       </main>
     </div>

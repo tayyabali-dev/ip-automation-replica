@@ -13,11 +13,11 @@ interface DashboardLayoutProps {
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <SidebarProvider>
-      <div className="flex h-screen overflow-hidden bg-[#f0f4f8] dark:bg-[#0c1929] text-neutral-900 dark:text-neutral-100">
-        {/* Metropolis Background */}
-        <div className="metropolis-sky">
-          <div className="flying-hero" />
-          <div className="hope-shine" />
+      <div className="flex h-screen overflow-hidden bg-[#0a0a0a] text-neutral-100">
+        {/* Gotham Background */}
+        <div className="gotham-city">
+          <div className="city-lights" />
+          <div className="bat-signal-glow" />
         </div>
 
         {/* Desktop Sidebar */}
