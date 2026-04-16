@@ -4,7 +4,7 @@ import React from 'react';
 import { Sidebar } from './Sidebar';
 import { MobileHeader } from './MobileHeader';
 import { SidebarProvider } from '@/contexts/SidebarContext';
-import { StarfieldBackground } from '@/components/ui/StarfieldBackground';
+
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -13,9 +13,12 @@ interface DashboardLayoutProps {
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <SidebarProvider>
-      <div className="flex h-screen overflow-hidden bg-[#090A0F] text-neutral-100">
-        {/* Starfield Background */}
-        <StarfieldBackground />
+      <div className="flex h-screen overflow-hidden bg-sky-50 dark:bg-[#0f172a] text-neutral-900 dark:text-neutral-100">
+        {/* Pokemon Background */}
+        <div className="pokeball-pattern">
+          <div className="floating-pokeballs" />
+          <div className="sparkles" />
+        </div>
 
         {/* Desktop Sidebar */}
         <Sidebar />

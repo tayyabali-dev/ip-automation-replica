@@ -11,16 +11,16 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          50: '#FFFDE7',
-          100: '#FFF9C4',
-          200: '#FFF59D',
-          300: '#FFF176',
-          400: '#FFEE58',
-          500: '#FFE81F', // Star Wars yellow
-          600: '#FDD835',
-          700: '#F9A825',
-          800: '#F57F17',
-          900: '#E65100',
+          50: '#FEE2E2',
+          100: '#FECACA',
+          200: '#FCA5A5',
+          300: '#F87171',
+          400: '#EF4444',
+          500: '#DC0A2D', // Pokemon Red (Pokeball)
+          600: '#B91C1C',
+          700: '#991B1B',
+          800: '#7F1D1D',
+          900: '#450A0A',
         },
         neutral: {
           50: '#F9FAFB',
@@ -35,15 +35,19 @@ const config: Config = {
           900: '#171717',
           950: '#0a0a0a',
         },
-        // Star Wars accents
-        saber: {
-          blue: '#4FC3F7',
-          red: '#EF5350',
-          green: '#66BB6A',
-          purple: '#CE93D8',
+        // Pokemon accents
+        pokemon: {
+          red: '#DC0A2D',      // Pokeball red
+          yellow: '#FFCB05',   // Pikachu yellow
+          blue: '#3B4CCA',     // Pokemon blue
+          white: '#FFFFFF',    // Pokeball white
+          electric: '#F7D02C', // Electric type
+          fire: '#FF9C54',     // Fire type
+          water: '#4A90E2',    // Water type
+          grass: '#78C850',    // Grass type
         },
-        imperial: '#E53935',
-        rebel: '#FF8F00',
+        pikachu: '#FFCB05',
+        pokeball: '#DC0A2D',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -56,9 +60,13 @@ const config: Config = {
       boxShadow: {
         'soft': '0 2px 10px -4px rgba(0, 0, 0, 0.05)',
         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-        'saber-glow': '0 0 15px rgba(255, 232, 31, 0.3), 0 0 30px rgba(255, 232, 31, 0.1)',
-        'saber-blue': '0 0 15px rgba(79, 195, 247, 0.4)',
-        'saber-red': '0 0 15px rgba(239, 83, 80, 0.4)',
+        'pokemon-glow': '0 0 15px rgba(220, 10, 45, 0.3), 0 0 30px rgba(220, 10, 45, 0.1)',
+        'pikachu-glow': '0 0 15px rgba(255, 203, 5, 0.4), 0 0 30px rgba(255, 203, 5, 0.2)',
+        'pokeball-glow': '0 0 15px rgba(220, 10, 45, 0.4)',
+        'electric-glow': '0 0 20px rgba(247, 208, 44, 0.5)',
+        'fire-glow': '0 0 15px rgba(255, 156, 84, 0.4)',
+        'water-glow': '0 0 15px rgba(74, 144, 226, 0.4)',
+        'grass-glow': '0 0 15px rgba(120, 200, 80, 0.4)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

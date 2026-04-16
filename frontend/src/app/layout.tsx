@@ -19,8 +19,8 @@ const newsreader = Newsreader({
 });
 
 export const metadata = {
-  title: "Galactic IP — Patent Bureau",
-  description: "A long time ago in a galaxy far, far away... patent automation was born",
+  title: "PokePatent — Trainer Bureau",
+  description: "Gotta patent 'em all! AI-powered patent automation for innovators.",
 };
 
 export default function RootLayout({
