@@ -87,66 +87,66 @@ export default function DashboardPage() {
         <div>
           <p className="text-neutral-500 text-sm mb-1 flex items-center gap-1.5">
             <Star className="w-3 h-3 text-primary-500/50" />
-            {formatDate()} — Metropolis Time
+            {formatDate()} — Omnitrix Standard Time
           </p>
           <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-100">
-            {getGreeting()}, <span className="text-primary-500 text-glow-super">{user?.full_name?.split(' ')[0] || 'Hero'}</span>
+            {getGreeting()}, <span className="text-primary-500 text-glow-omni">{user?.full_name?.split(' ')[0] || 'Ben'}</span>
           </h1>
         </div>
         <Link href="/dashboard/history">
           <Button variant="outline" size="sm" className="gap-2 border-primary-500/30 text-primary-400 hover:bg-primary-500/10 hover:border-primary-500/50">
             <ScrollText className="w-4 h-4" />
-            Archives
+            Alien Database
           </Button>
         </Link>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
+        <div className="bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-primary-500/10 border border-primary-500/30 flex items-center justify-center">
-              <FileText className="w-5 h-5 text-primary-500 drop-shadow-[0_0_8px_rgba(253,185,19,0.5)]" />
+              <FileText className="w-5 h-5 text-primary-500 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{recentApplications.length}</p>
-              <p className="text-xs text-neutral-600 dark:text-neutral-400">Active Missions</p>
+              <p className="text-2xl font-semibold text-neutral-100">{recentApplications.length}</p>
+              <p className="text-xs text-neutral-400">Transforms</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
+        <div className="bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-batman-steel/10 border border-batman-steel/30 flex items-center justify-center">
-              <Radar className="w-5 h-5 text-batman-steel drop-shadow-[0_0_6px_rgba(90,108,125,0.5)]" />
+            <div className="w-10 h-10 rounded-xl bg-omnitrix-gray/10 border border-omnitrix-gray/30 flex items-center justify-center">
+              <Radar className="w-5 h-5 text-omnitrix-silver drop-shadow-[0_0_6px_rgba(156,163,175,0.5)]" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{recentOfficeActions.length}</p>
-              <p className="text-xs text-neutral-600 dark:text-neutral-400">Threat Scans</p>
+              <p className="text-2xl font-semibold text-neutral-100">{recentOfficeActions.length}</p>
+              <p className="text-xs text-neutral-400">Alien Scans</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
+        <div className="bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-green-500/10 border border-green-500/30 flex items-center justify-center">
-              <Shield className="w-5 h-5 text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.5)]" />
+            <div className="w-10 h-10 rounded-xl bg-omniGlow/10 border border-omniGlow/30 flex items-center justify-center">
+              <Shield className="w-5 h-5 text-omniGlow drop-shadow-[0_0_6px_rgba(0,255,136,0.5)]" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{totalItems}</p>
-              <p className="text-xs text-neutral-600 dark:text-neutral-400">Missions Complete</p>
+              <p className="text-2xl font-semibold text-neutral-100">{totalItems}</p>
+              <p className="text-xs text-neutral-400">Aliens Unlocked</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
+        <div className="bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center">
               <Crosshair className="w-5 h-5 text-red-400 drop-shadow-[0_0_6px_rgba(239,68,68,0.5)]" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{totalRejections}</p>
-              <p className="text-xs text-neutral-600 dark:text-neutral-400">Threats Detected</p>
+              <p className="text-2xl font-semibold text-neutral-100">{totalRejections}</p>
+              <p className="text-xs text-neutral-400">Villains</p>
             </div>
           </div>
         </div>
@@ -155,23 +155,22 @@ export default function DashboardPage() {
       {/* Feature Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* ADS Generator */}
-        <div className="bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/25 rounded-xl overflow-hidden group hover:border-primary-500/50 transition-all duration-300">
+        <div className="bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/25 rounded-xl overflow-hidden group hover:border-primary-500/50 transition-all duration-300">
           <div className="flex">
-            {/* Left accent bar */}
-            <div className="w-1 bg-primary-500 shadow-[0_0_12px_rgba(253,185,19,0.6)]" />
+            <div className="w-1 bg-primary-500 shadow-[0_0_12px_rgba(16,185,129,0.6)]" />
             <div className="p-5 flex-1">
               <div className="flex items-start gap-4">
                 <div className="w-11 h-11 rounded-xl bg-primary-500/15 border border-primary-500/40 flex items-center justify-center flex-shrink-0">
-                  <Swords className="w-5 h-5 text-primary-500 drop-shadow-[0_0_10px_rgba(253,185,19,0.7)]" />
+                  <Swords className="w-5 h-5 text-primary-500 drop-shadow-[0_0_10px_rgba(16,185,129,0.7)]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Patent Application System</h3>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
-                    Upload patent documents. Our super-powered AI will generate compliant application forms.
+                  <h3 className="font-semibold text-neutral-100 mb-1">New Transformation</h3>
+                  <p className="text-sm text-neutral-400 mb-4 leading-relaxed">
+                    Upload patent documents. The Omnitrix will transform them into compliant application forms.
                   </p>
-                  <Button asChild variant="primary" size="sm" className="bg-primary-500 hover:bg-primary-600 text-white font-bold shadow-[0_0_20px_rgba(206,17,38,0.4)] hover:shadow-[0_0_30px_rgba(206,17,38,0.6)] transition-all">
+                  <Button asChild variant="primary" size="sm" className="bg-primary-500 hover:bg-primary-600 text-black font-bold shadow-[0_0_20px_rgba(16,185,129,0.5)] hover:shadow-[0_0_30px_rgba(16,185,129,0.7)] transition-all">
                     <Link href="/dashboard/new-application">
-                      Start Mission
+                      Transform
                       <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                     </Link>
                   </Button>
@@ -182,23 +181,22 @@ export default function DashboardPage() {
         </div>
 
         {/* Office Action Analyzer */}
-        <div className="bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur-sm border border-metropolis/20 rounded-xl overflow-hidden group hover:border-metropolis/40 transition-all duration-300">
+        <div className="bg-[#0f172a]/90 backdrop-blur-sm border border-red-500/20 rounded-xl overflow-hidden group hover:border-red-500/40 transition-all duration-300">
           <div className="flex">
-            {/* Left accent bar */}
-            <div className="w-1 bg-metropolis shadow-[0_0_10px_rgba(4,118,242,0.5)]" />
+            <div className="w-1 bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
             <div className="p-5 flex-1">
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-metropolis/15 border border-metropolis/30 flex items-center justify-center flex-shrink-0">
-                  <Radar className="w-5 h-5 text-metropolis drop-shadow-[0_0_8px_rgba(4,118,242,0.6)]" />
+                <div className="w-11 h-11 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center flex-shrink-0">
+                  <Radar className="w-5 h-5 text-red-400 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Threat Analysis</h3>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
-                    Analyze office actions for rejections, deadlines, and prior art. Generate heroic response strategy.
+                  <h3 className="font-semibold text-neutral-100 mb-1">Alien Scan</h3>
+                  <p className="text-sm text-neutral-400 mb-4 leading-relaxed">
+                    Scan office actions for rejections, deadlines, and prior art. Generate counter-attack strategy.
                   </p>
-                  <Button asChild variant="outline" size="sm" className="border-metropolis/40 text-metropolis hover:bg-metropolis/10 hover:border-metropolis/60 group-hover:shadow-[0_0_15px_rgba(4,118,242,0.3)] transition-all">
+                  <Button asChild variant="outline" size="sm" className="border-red-500/40 text-red-400 hover:bg-red-500/10 hover:border-red-500/60 group-hover:shadow-[0_0_15px_rgba(239,68,68,0.3)] transition-all">
                     <Link href="/dashboard/office-action">
-                      Analyze Threat
+                      Scan Now
                       <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                     </Link>
                   </Button>
@@ -211,15 +209,14 @@ export default function DashboardPage() {
 
       {/* Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        {/* Recent Applications */}
-        <div className="bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl">
+        <div className="bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl">
           <div className="px-5 py-4 border-b border-primary-500/20">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-medium flex items-center gap-2 text-neutral-900 dark:text-neutral-100">
+              <h3 className="text-base font-medium flex items-center gap-2 text-neutral-100">
                 <div className="w-6 h-6 rounded-md bg-primary-500/15 flex items-center justify-center">
                   <Swords className="w-3.5 h-3.5 text-primary-500" />
                 </div>
-                Recent Missions
+                Recent Transforms
               </h3>
               {recentApplications.length > 0 && (
                 <Link href="/dashboard/history" className="text-xs text-primary-500 hover:text-primary-400 font-medium hover:underline">
@@ -238,8 +235,8 @@ export default function DashboardPage() {
                 <div className="w-12 h-12 rounded-full bg-primary-500/10 border border-primary-500/20 flex items-center justify-center mx-auto mb-3">
                   <Swords className="w-6 h-6 text-neutral-500" />
                 </div>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">No missions yet</p>
-                <p className="text-xs text-neutral-500 dark:text-neutral-600">Begin your first mission</p>
+                <p className="text-sm text-neutral-400 mb-1">No transforms yet</p>
+                <p className="text-xs text-neutral-600">Activate the Omnitrix to begin</p>
               </div>
             ) : (
               <div className="space-y-1">
@@ -250,8 +247,8 @@ export default function DashboardPage() {
                     className="flex items-center justify-between p-3 -mx-3 rounded-lg hover:bg-primary-500/5 transition-colors group"
                   >
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200 truncate group-hover:text-primary-500 transition-colors">
-                        {app.title || 'Untitled Mission'}
+                      <p className="text-sm font-medium text-neutral-200 truncate group-hover:text-primary-500 transition-colors">
+                        {app.title || 'Untitled Transform'}
                       </p>
                       <p className="text-xs text-neutral-500 mt-0.5">
                         {app.application_number || 'Draft'} · {formatRelativeDate(app.created_at)}
@@ -265,15 +262,14 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Recent Office Actions */}
-        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl">
+        <div className="bg-[#0f172a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl">
           <div className="px-5 py-4 border-b border-primary-500/20">
             <div className="flex items-center justify-between">
               <h3 className="text-base font-medium flex items-center gap-2 text-neutral-100">
                 <div className="w-6 h-6 rounded-md bg-red-500/15 flex items-center justify-center">
                   <Radar className="w-3.5 h-3.5 text-red-400" />
                 </div>
-                Recent Threat Scans
+                Recent Alien Scans
               </h3>
               {recentOfficeActions.length > 0 && (
                 <Link href="/dashboard/history" className="text-xs text-primary-500 hover:text-primary-400 font-medium hover:underline">
@@ -292,8 +288,8 @@ export default function DashboardPage() {
                 <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-3">
                   <Radar className="w-6 h-6 text-neutral-500" />
                 </div>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">No threat scans yet</p>
-                <p className="text-xs text-neutral-500 dark:text-neutral-600">Start analyzing threats</p>
+                <p className="text-sm text-neutral-400 mb-1">No alien scans yet</p>
+                <p className="text-xs text-neutral-600">Start scanning for threats</p>
               </div>
             ) : (
               <div className="space-y-1">
@@ -305,7 +301,7 @@ export default function DashboardPage() {
                   >
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-medium text-neutral-200 truncate group-hover:text-red-400 transition-colors">
-                        {oa.application_number || oa.title_of_invention || 'Investigation'}
+                        {oa.application_number || oa.title_of_invention || 'Alien Scan'}
                       </p>
                       <div className="flex items-center gap-2 mt-0.5">
                         <p className="text-xs text-neutral-500">
@@ -313,7 +309,7 @@ export default function DashboardPage() {
                         </p>
                         {oa.total_rejections > 0 && (
                           <span className="inline-flex items-center text-[10px] font-medium text-red-400 bg-red-500/10 border border-red-500/30 px-1.5 py-0.5 rounded">
-                            {oa.total_rejections} threat{oa.total_rejections !== 1 ? 's' : ''}
+                            {oa.total_rejections} villain{oa.total_rejections !== 1 ? 's' : ''}
                           </span>
                         )}
                       </div>
@@ -327,28 +323,28 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Getting Started (only shown when no activity) */}
+      {/* Getting Started */}
       {totalItems === 0 && !loading && (
         <div className="border-dashed border-2 border-primary-500/30 bg-primary-500/5 rounded-xl">
           <div className="p-8 text-center">
             <div className="w-14 h-14 rounded-full bg-primary-500/10 border border-primary-500/30 flex items-center justify-center mx-auto mb-4">
-              <Sparkles className="w-7 h-7 text-primary-500 drop-shadow-[0_0_15px_rgba(253,185,19,0.6)]" />
+              <Sparkles className="w-7 h-7 text-primary-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]" />
             </div>
-            <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Metropolis Needs You</h3>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-5 max-w-sm mx-auto">
-              Truth and justice await. Choose your first mission to protect innovation in Metropolis.
+            <h3 className="font-semibold text-neutral-100 mb-1">It's Hero Time!</h3>
+            <p className="text-sm text-neutral-400 mb-5 max-w-sm mx-auto">
+              The Omnitrix is charged and ready. Choose your first transformation to protect innovation across the universe.
             </p>
             <div className="flex items-center justify-center gap-3">
-              <Button asChild variant="primary" size="sm" className="bg-primary-500 hover:bg-primary-600 text-white font-bold shadow-[0_0_15px_rgba(206,17,38,0.4)]">
+              <Button asChild variant="primary" size="sm" className="bg-primary-500 hover:bg-primary-600 text-black font-bold shadow-[0_0_15px_rgba(16,185,129,0.5)]">
                 <Link href="/dashboard/new-application">
                   <Swords className="w-4 h-4 mr-1.5" />
-                  New Mission
+                  New Transform
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="sm" className="border-metropolis/40 text-metropolis hover:bg-metropolis/10">
+              <Button asChild variant="outline" size="sm" className="border-red-500/40 text-red-400 hover:bg-red-500/10">
                 <Link href="/dashboard/office-action">
                   <Radar className="w-4 h-4 mr-1.5" />
-                  Analyze Threat
+                  Alien Scan
                 </Link>
               </Button>
             </div>

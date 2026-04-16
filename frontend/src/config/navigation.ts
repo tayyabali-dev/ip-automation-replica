@@ -19,35 +19,35 @@ export interface NavItem {
 
 export const navigationItems: NavItem[] = [
   {
-    label: 'Batcave',
+    label: 'Plumber HQ',
     icon: Crosshair,
     href: '/dashboard',
     key: 'dashboard',
     section: 'main',
   },
   {
-    label: 'New Case',
+    label: 'New Transform',
     icon: Swords,
     href: '/dashboard/new-application',
     key: 'new-application',
     section: 'main',
   },
   {
-    label: 'Crime Analysis',
+    label: 'Alien Scan',
     icon: Radar,
     href: '/dashboard/office-action',
     key: 'office-action',
     section: 'main',
   },
   {
-    label: 'Case Files',
+    label: 'Alien Database',
     icon: ScrollText,
     href: '/dashboard/history',
     key: 'history',
     section: 'main',
   },
   {
-    label: 'Bat Signal',
+    label: 'Omnitrix Alert',
     icon: Bell,
     href: '/dashboard/notifications',
     key: 'notifications',
@@ -57,14 +57,14 @@ export const navigationItems: NavItem[] = [
 
 export const bottomNavItems: NavItem[] = [
   {
-    label: 'Batcomputer',
+    label: 'Plumber Tech',
     icon: Shield,
     href: '/dashboard/settings',
     key: 'settings',
     section: 'bottom',
   },
   {
-    label: 'Alfred',
+    label: 'Grandpa Max',
     icon: HelpCircle,
     href: '/dashboard/help',
     key: 'help',

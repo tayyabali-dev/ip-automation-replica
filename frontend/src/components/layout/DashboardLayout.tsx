@@ -14,10 +14,10 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <SidebarProvider>
       <div className="flex h-screen overflow-hidden bg-[#0a0a0a] text-neutral-100">
-        {/* Gotham Background */}
-        <div className="gotham-city">
-          <div className="city-lights" />
-          <div className="bat-signal-glow" />
+        {/* Omnitrix Background */}
+        <div className="omnitrix-bg">
+          <div className="energy-grid" />
+          <div className="omni-glow" />
         </div>
 
         {/* Desktop Sidebar */}

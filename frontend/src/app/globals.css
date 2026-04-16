@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #1a1a1a;
+  --background: #0a0a0a;
   --foreground: #e5e5e5;
-  --primary: #FDB913;
-  --primary-hover: #E6A711;
-  --card: rgba(45, 45, 45, 0.9);
-  --border: rgba(253, 185, 19, 0.2);
+  --primary: #10B981;
+  --primary-hover: #059669;
+  --card: rgba(15, 23, 42, 0.95);
+  --border: rgba(16, 185, 129, 0.2);
   --muted: #737373;
   --muted-foreground: #a3a3a3;
   --sidebar-width-collapsed: 80px;
@@ -18,10 +18,10 @@
 .dark {
   --background: #0a0a0a;
   --foreground: #e5e5e5;
-  --primary: #FDB913;
-  --primary-hover: #E6A711;
-  --card: rgba(26, 31, 46, 0.95);
-  --border: rgba(253, 185, 19, 0.2);
+  --primary: #10B981;
+  --primary-hover: #059669;
+  --card: rgba(15, 23, 42, 0.95);
+  --border: rgba(16, 185, 129, 0.2);
   --muted: #737373;
   --muted-foreground: #a3a3a3;
 }
@@ -46,58 +46,58 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== GOTHAM CITY BACKGROUND ===== */
-.gotham-city {
+/* ===== OMNITRIX ENERGY BACKGROUND ===== */
+.omnitrix-bg {
   position: fixed;
   inset: 0;
   overflow: hidden;
   z-index: 0;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a1f2e 50%, #0a0a0a 100%);
+  background: linear-gradient(180deg, #0a0a0a 0%, #0f1a14 50%, #0a0a0a 100%);
 }
 
-.gotham-city .city-lights {
+.omnitrix-bg .energy-grid {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(1px 1px at 15% 20%, #FDB913, transparent),
-    radial-gradient(1px 1px at 25% 35%, #fff, transparent),
-    radial-gradient(2px 2px at 45% 15%, #FDB913, transparent),
-    radial-gradient(1px 1px at 65% 40%, #fff, transparent),
-    radial-gradient(1px 1px at 75% 25%, #FDB913, transparent),
-    radial-gradient(2px 2px at 85% 30%, #fff, transparent),
-    radial-gradient(1px 1px at 35% 60%, #FDB913, transparent),
-    radial-gradient(1px 1px at 55% 70%, #fff, transparent),
-    radial-gradient(2px 2px at 70% 65%, #FDB913, transparent);
+    radial-gradient(1px 1px at 10% 20%, #10B981, transparent),
+    radial-gradient(1px 1px at 30% 50%, #00FF88, transparent),
+    radial-gradient(2px 2px at 50% 15%, #10B981, transparent),
+    radial-gradient(1px 1px at 70% 45%, #00FF88, transparent),
+    radial-gradient(1px 1px at 85% 25%, #10B981, transparent),
+    radial-gradient(2px 2px at 20% 70%, #00FF88, transparent),
+    radial-gradient(1px 1px at 60% 80%, #10B981, transparent),
+    radial-gradient(1px 1px at 90% 60%, #00FF88, transparent),
+    radial-gradient(2px 2px at 40% 35%, #10B981, transparent);
   background-size: 800px 600px;
   background-repeat: repeat;
-  animation: cityFlicker 4s ease-in-out infinite;
-  opacity: 0.3;
+  animation: energyPulse 4s ease-in-out infinite;
+  opacity: 0.25;
 }
 
-.gotham-city .bat-signal-glow {
+.omnitrix-bg .omni-glow {
   position: absolute;
   top: 20%;
   right: 10%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(253, 185, 19, 0.15) 0%, transparent 70%);
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%);
   border-radius: 50%;
-  animation: pulseSignal 3s ease-in-out infinite;
+  animation: omniPulse 3s ease-in-out infinite;
   pointer-events: none;
 }
 
-@keyframes cityFlicker {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.5; }
+@keyframes energyPulse {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.45; }
 }
 
-@keyframes pulseSignal {
+@keyframes omniPulse {
   0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.05); }
+  50% { opacity: 0.6; transform: scale(1.08); }
 }
 
-/* Bat Signal glow effect */
-.bat-signal-effect {
+/* Omnitrix glow effect */
+.omnitrix-effect {
   position: fixed;
   border-radius: 50%;
   pointer-events: none;
@@ -108,31 +108,31 @@ body {
 /* ===== GLASSMORPHISM ===== */
 @layer utilities {
   .glass-panel {
-    background: rgba(45, 45, 45, 0.85);
+    background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(253, 185, 19, 0.12);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(16, 185, 129, 0.12);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   }
 
   .dark .glass-panel {
-    background: rgba(26, 31, 46, 0.85);
-    border: 1px solid rgba(253, 185, 19, 0.12);
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(16, 185, 129, 0.12);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   }
 
   .glass-panel-strong {
-    background: rgba(45, 45, 45, 0.95);
+    background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(253, 185, 19, 0.2);
-    box-shadow: 0 8px 32px -8px rgba(253, 185, 19, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 0 8px 32px -8px rgba(16, 185, 129, 0.15);
   }
 
   .dark .glass-panel-strong {
-    background: rgba(26, 31, 46, 0.95);
-    border: 1px solid rgba(253, 185, 19, 0.2);
-    box-shadow: 0 8px 32px -8px rgba(253, 185, 19, 0.2);
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 0 8px 32px -8px rgba(16, 185, 129, 0.2);
   }
 }
 
@@ -157,27 +157,27 @@ body {
   transform: translateY(-50%);
   margin-left: 0.5rem;
   padding: 0.5rem 0.75rem;
-  background: #2d2d2d;
-  color: #FDB913;
+  background: #0f172a;
+  color: #10B981;
   font-size: 0.875rem;
   border-radius: 0.5rem;
   white-space: nowrap;
   z-index: 50;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(253, 185, 19, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .dark .sidebar-tooltip {
-  background: #1a1f2e;
-  color: #FDB913;
-  border: 1px solid rgba(253, 185, 19, 0.3);
+  background: #0f172a;
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .sidebar-collapsed .group:hover .sidebar-tooltip {
   display: block;
 }
 
-/* Custom Scrollbar - Batman themed */
+/* Custom Scrollbar - Omnitrix themed */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -188,30 +188,30 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(253, 185, 19, 0.3);
+  background: rgba(16, 185, 129, 0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(253, 185, 19, 0.5);
+  background: rgba(16, 185, 129, 0.5);
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: rgba(253, 185, 19, 0.4);
+  background: rgba(16, 185, 129, 0.4);
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(253, 185, 19, 0.6);
+  background: rgba(16, 185, 129, 0.6);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(253, 185, 19, 0.3) transparent;
+  scrollbar-color: rgba(16, 185, 129, 0.3) transparent;
 }
 
 .dark * {
-  scrollbar-color: rgba(253, 185, 19, 0.4) transparent;
+  scrollbar-color: rgba(16, 185, 129, 0.4) transparent;
 }
 
 /* Animation Classes */
@@ -278,48 +278,48 @@ body {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
 }
 
-/* Grid Pattern Background (for login) — Gotham tech feel */
+/* Grid Pattern Background (for login) — Omnitrix circuit feel */
 .bg-grid-pattern {
   background-image:
-    linear-gradient(to right, rgba(253, 185, 19, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(253, 185, 19, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, rgba(16, 185, 129, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 185, 129, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 .dark .bg-grid-pattern {
   background-image:
-    linear-gradient(to right, rgba(253, 185, 19, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(253, 185, 19, 0.1) 1px, transparent 1px);
+    linear-gradient(to right, rgba(16, 185, 129, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 185, 129, 0.12) 1px, transparent 1px);
 }
 
-/* Bat Signal Glow Effect */
-.bat-signal-glow-effect {
+/* Omnitrix Glow Effect */
+.omnitrix-glow-effect {
   position: fixed;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(253, 185, 19, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
-/* Batman glow text */
-.text-glow-yellow {
-  text-shadow: 0 0 10px rgba(253, 185, 19, 0.7), 0 0 20px rgba(253, 185, 19, 0.5), 0 0 40px rgba(253, 185, 19, 0.3);
+/* Ben 10 glow text */
+.text-glow-green {
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.7), 0 0 20px rgba(16, 185, 129, 0.5), 0 0 40px rgba(16, 185, 129, 0.3);
 }
 
-.text-glow-bat {
-  text-shadow: 0 0 15px rgba(253, 185, 19, 0.8), 0 0 30px rgba(253, 185, 19, 0.6), 0 0 45px rgba(253, 185, 19, 0.4);
+.text-glow-omni {
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.8), 0 0 30px rgba(0, 255, 136, 0.5), 0 0 45px rgba(0, 255, 136, 0.3);
 }
 
-.text-glow-steel {
-  text-shadow: 0 0 10px rgba(90, 108, 125, 0.6), 0 0 20px rgba(90, 108, 125, 0.4);
+.text-glow-tech {
+  text-shadow: 0 0 10px rgba(55, 65, 81, 0.6), 0 0 20px rgba(55, 65, 81, 0.4);
 }
 
-/* Batcomputer perspective */
-.batcomputer-perspective {
+/* Omnitrix perspective */
+.omnitrix-perspective {
   perspective: 400px;
 }
 
-.batcomputer-screen {
+.omnitrix-screen {
   transform: rotateX(1deg);
   transform-origin: 50% 50%;
 }
@@ -334,13 +334,13 @@ body {
   color: var(--muted-foreground);
 }
 
-/* Bat Signal border accent */
+/* Omnitrix border accent */
 .border-glow {
-  border: 1px solid rgba(253, 185, 19, 0.25);
-  box-shadow: inset 0 0 20px rgba(253, 185, 19, 0.08), 0 0 15px rgba(253, 185, 19, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.08), 0 0 15px rgba(16, 185, 129, 0.12);
 }
 
 .dark .border-glow {
-  border: 1px solid rgba(253, 185, 19, 0.3);
-  box-shadow: inset 0 0 20px rgba(253, 185, 19, 0.1), 0 0 15px rgba(253, 185, 19, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.1), 0 0 15px rgba(16, 185, 129, 0.15);
 }

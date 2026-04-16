@@ -19,8 +19,8 @@ const newsreader = Newsreader({
 });
 
 export const metadata = {
-  title: "Wayne IP — Gotham Patents",
-  description: "The Dark Knight of Patent Automation. Protecting innovation in Gotham and beyond.",
+  title: "Omnitrix IP — Tennyson Patents",
+  description: "It's Hero Time! Alien-powered patent automation for the universe.",
 };
 
 export default function RootLayout({
