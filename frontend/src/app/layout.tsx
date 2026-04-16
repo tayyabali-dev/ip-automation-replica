@@ -19,8 +19,8 @@ const newsreader = Newsreader({
 });
 
 export const metadata = {
-  title: "PokePatent — Trainer Bureau",
-  description: "Gotta patent 'em all! AI-powered patent automation for innovators.",
+  title: "Wayne IP — Gotham Patents",
+  description: "The Dark Knight of Patent Automation. Protecting innovation in Gotham and beyond.",
 };
 
 export default function RootLayout({

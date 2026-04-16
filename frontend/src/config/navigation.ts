@@ -19,35 +19,35 @@ export interface NavItem {
 
 export const navigationItems: NavItem[] = [
   {
-    label: 'Pokemon Center',
+    label: 'Batcave',
     icon: Crosshair,
     href: '/dashboard',
     key: 'dashboard',
     section: 'main',
   },
   {
-    label: 'New Patent',
+    label: 'New Case',
     icon: Swords,
     href: '/dashboard/new-application',
     key: 'new-application',
     section: 'main',
   },
   {
-    label: 'Office Scan',
+    label: 'Crime Analysis',
     icon: Radar,
     href: '/dashboard/office-action',
     key: 'office-action',
     section: 'main',
   },
   {
-    label: 'Patent Archives',
+    label: 'Case Files',
     icon: ScrollText,
     href: '/dashboard/history',
     key: 'history',
     section: 'main',
   },
   {
-    label: 'Poke Center Alerts',
+    label: 'Bat Signal',
     icon: Bell,
     href: '/dashboard/notifications',
     key: 'notifications',
@@ -57,14 +57,14 @@ export const navigationItems: NavItem[] = [
 
 export const bottomNavItems: NavItem[] = [
   {
-    label: 'Trainer Settings',
+    label: 'Batcomputer',
     icon: Shield,
     href: '/dashboard/settings',
     key: 'settings',
     section: 'bottom',
   },
   {
-    label: 'Professor Oak',
+    label: 'Alfred',
     icon: HelpCircle,
     href: '/dashboard/help',
     key: 'help',

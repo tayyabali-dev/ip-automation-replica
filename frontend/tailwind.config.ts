@@ -11,16 +11,16 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          50: '#FEE2E2',
-          100: '#FECACA',
-          200: '#FCA5A5',
-          300: '#F87171',
-          400: '#EF4444',
-          500: '#DC0A2D', // Pokemon Red (Pokeball)
-          600: '#B91C1C',
-          700: '#991B1B',
-          800: '#7F1D1D',
-          900: '#450A0A',
+          50: '#FFF9E6',
+          100: '#FFF3CC',
+          200: '#FFE799',
+          300: '#FFDB66',
+          400: '#FFCF33',
+          500: '#FDB913', // Batman Yellow (Bat Signal)
+          600: '#E6A711',
+          700: '#CC940F',
+          800: '#B3820D',
+          900: '#99700B',
         },
         neutral: {
           50: '#F9FAFB',
@@ -35,19 +35,17 @@ const config: Config = {
           900: '#171717',
           950: '#0a0a0a',
         },
-        // Pokemon accents
-        pokemon: {
-          red: '#DC0A2D',      // Pokeball red
-          yellow: '#FFCB05',   // Pikachu yellow
-          blue: '#3B4CCA',     // Pokemon blue
-          white: '#FFFFFF',    // Pokeball white
-          electric: '#F7D02C', // Electric type
-          fire: '#FF9C54',     // Fire type
-          water: '#4A90E2',    // Water type
-          grass: '#78C850',    // Grass type
+        // Batman/Gotham accents
+        batman: {
+          yellow: '#FDB913',    // Bat Signal yellow
+          black: '#0A0A0A',     // Batman black
+          gray: '#2D2D2D',      // Batsuit gray
+          darkBlue: '#1A1F2E',  // Gotham night
+          steel: '#5A6C7D',     // Steel/tech
+          gold: '#D4AF37',      // Gold accent
         },
-        pikachu: '#FFCB05',
-        pokeball: '#DC0A2D',
+        gotham: '#1A1F2E',
+        batSignal: '#FDB913',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -60,13 +58,10 @@ const config: Config = {
       boxShadow: {
         'soft': '0 2px 10px -4px rgba(0, 0, 0, 0.05)',
         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-        'pokemon-glow': '0 0 15px rgba(220, 10, 45, 0.3), 0 0 30px rgba(220, 10, 45, 0.1)',
-        'pikachu-glow': '0 0 15px rgba(255, 203, 5, 0.4), 0 0 30px rgba(255, 203, 5, 0.2)',
-        'pokeball-glow': '0 0 15px rgba(220, 10, 45, 0.4)',
-        'electric-glow': '0 0 20px rgba(247, 208, 44, 0.5)',
-        'fire-glow': '0 0 15px rgba(255, 156, 84, 0.4)',
-        'water-glow': '0 0 15px rgba(74, 144, 226, 0.4)',
-        'grass-glow': '0 0 15px rgba(120, 200, 80, 0.4)',
+        'bat-signal': '0 0 20px rgba(253, 185, 19, 0.4), 0 0 40px rgba(253, 185, 19, 0.2)',
+        'bat-glow': '0 0 15px rgba(253, 185, 19, 0.5), 0 0 30px rgba(253, 185, 19, 0.3)',
+        'gotham-glow': '0 0 15px rgba(26, 31, 46, 0.6)',
+        'dark-steel': '0 0 10px rgba(90, 108, 125, 0.3)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

@@ -48,9 +48,9 @@ export default function DashboardPage() {
 
   const getGreeting = () => {
     const hour = new Date().getHours();
-    if (hour < 12) return 'Good morning, Trainer';
-    if (hour < 18) return 'Good afternoon, Trainer';
-    return 'Good evening, Trainer';
+    if (hour < 12) return 'Good morning';
+    if (hour < 18) return 'Good afternoon';
+    return 'Good evening';
   };
 
   const formatDate = () => {
@@ -85,68 +85,68 @@ export default function DashboardPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <p className="text-neutral-500 dark:text-neutral-400 text-sm mb-1 flex items-center gap-1.5">
-            <Star className="w-3 h-3 text-pokemon-yellow" />
-            {formatDate()}
+          <p className="text-neutral-500 text-sm mb-1 flex items-center gap-1.5">
+            <Star className="w-3 h-3 text-primary-500/50" />
+            {formatDate()} — Gotham Time
           </p>
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-            {getGreeting()}, <span className="text-primary-500 text-glow-red">{user?.full_name?.split(' ')[0] || 'Ash'}</span>
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-100">
+            {getGreeting()}, <span className="text-primary-500 text-glow-bat">{user?.full_name?.split(' ')[0] || 'Detective'}</span>
           </h1>
         </div>
         <Link href="/dashboard/history">
-          <Button variant="outline" size="sm" className="gap-2 border-primary-500/20 text-primary-500 hover:bg-primary-500/10 hover:border-primary-500/30">
+          <Button variant="outline" size="sm" className="gap-2 border-primary-500/30 text-primary-400 hover:bg-primary-500/10 hover:border-primary-500/50">
             <ScrollText className="w-4 h-4" />
-            Patent Archives
+            Case Files
           </Button>
         </Link>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white/90 dark:bg-[#1e293b]/90 backdrop-blur-sm border border-primary-500/15 rounded-xl p-4 hover:border-primary-500/30 transition-all">
+        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-pokemon-water/10 border border-pokemon-water/30 flex items-center justify-center">
-              <FileText className="w-5 h-5 text-pokemon-water drop-shadow-[0_0_6px_rgba(74,144,226,0.5)]" />
+            <div className="w-10 h-10 rounded-xl bg-primary-500/10 border border-primary-500/30 flex items-center justify-center">
+              <FileText className="w-5 h-5 text-primary-500 drop-shadow-[0_0_8px_rgba(253,185,19,0.5)]" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{recentApplications.length}</p>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">Patents Filed</p>
+              <p className="text-2xl font-semibold text-neutral-100">{recentApplications.length}</p>
+              <p className="text-xs text-neutral-400">Active Cases</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/90 dark:bg-[#1e293b]/90 backdrop-blur-sm border border-primary-500/15 rounded-xl p-4 hover:border-primary-500/30 transition-all">
+        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-pokemon-electric/10 border border-pokemon-electric/30 flex items-center justify-center">
-              <Radar className="w-5 h-5 text-pokemon-electric drop-shadow-[0_0_6px_rgba(247,208,44,0.5)]" />
+            <div className="w-10 h-10 rounded-xl bg-batman-steel/10 border border-batman-steel/30 flex items-center justify-center">
+              <Radar className="w-5 h-5 text-batman-steel drop-shadow-[0_0_6px_rgba(90,108,125,0.5)]" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{recentOfficeActions.length}</p>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">Office Actions</p>
+              <p className="text-2xl font-semibold text-neutral-100">{recentOfficeActions.length}</p>
+              <p className="text-xs text-neutral-400">Investigations</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/90 dark:bg-[#1e293b]/90 backdrop-blur-sm border border-primary-500/15 rounded-xl p-4 hover:border-primary-500/30 transition-all">
+        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-pokemon-grass/10 border border-pokemon-grass/30 flex items-center justify-center">
-              <Shield className="w-5 h-5 text-pokemon-grass drop-shadow-[0_0_6px_rgba(120,200,80,0.5)]" />
+            <div className="w-10 h-10 rounded-xl bg-green-500/10 border border-green-500/30 flex items-center justify-center">
+              <Shield className="w-5 h-5 text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.5)]" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{totalItems}</p>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">Total Caught</p>
+              <p className="text-2xl font-semibold text-neutral-100">{totalItems}</p>
+              <p className="text-xs text-neutral-400">Cases Closed</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/90 dark:bg-[#1e293b]/90 backdrop-blur-sm border border-primary-500/15 rounded-xl p-4 hover:border-primary-500/30 transition-all">
+        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl p-4 hover:border-primary-500/40 transition-all">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-pokemon-fire/10 border border-pokemon-fire/30 flex items-center justify-center">
-              <Crosshair className="w-5 h-5 text-pokemon-fire drop-shadow-[0_0_6px_rgba(255,156,84,0.5)]" />
+            <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center">
+              <Crosshair className="w-5 h-5 text-red-400 drop-shadow-[0_0_6px_rgba(239,68,68,0.5)]" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">{totalRejections}</p>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">Challenges</p>
+              <p className="text-2xl font-semibold text-neutral-100">{totalRejections}</p>
+              <p className="text-xs text-neutral-400">Threats</p>
             </div>
           </div>
         </div>
@@ -155,23 +155,23 @@ export default function DashboardPage() {
       {/* Feature Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* ADS Generator */}
-        <div className="bg-white/90 dark:bg-[#1e293b]/90 backdrop-blur-sm border border-pokemon-water/20 rounded-xl overflow-hidden group hover:border-pokemon-water/40 transition-all duration-300">
+        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/25 rounded-xl overflow-hidden group hover:border-primary-500/50 transition-all duration-300">
           <div className="flex">
             {/* Left accent bar */}
-            <div className="w-1 bg-pokemon-water shadow-[0_0_8px_rgba(74,144,226,0.5)]" />
+            <div className="w-1 bg-primary-500 shadow-[0_0_12px_rgba(253,185,19,0.6)]" />
             <div className="p-5 flex-1">
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-pokemon-water/15 border border-pokemon-water/30 flex items-center justify-center flex-shrink-0">
-                  <Swords className="w-5 h-5 text-pokemon-water drop-shadow-[0_0_8px_rgba(74,144,226,0.6)]" />
+                <div className="w-11 h-11 rounded-xl bg-primary-500/15 border border-primary-500/40 flex items-center justify-center flex-shrink-0">
+                  <Swords className="w-5 h-5 text-primary-500 drop-shadow-[0_0_10px_rgba(253,185,19,0.7)]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Patent Application</h3>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
-                    Upload your patent documents. Our AI will generate compliant application forms instantly.
+                  <h3 className="font-semibold text-neutral-100 mb-1">Patent Application System</h3>
+                  <p className="text-sm text-neutral-400 mb-4 leading-relaxed">
+                    Upload patent documents. The Batcomputer will generate compliant application forms.
                   </p>
-                  <Button asChild variant="primary" size="sm" className="bg-pokemon-water hover:bg-pokemon-water/90 text-white font-bold shadow-[0_0_15px_rgba(74,144,226,0.3)] hover:shadow-[0_0_20px_rgba(74,144,226,0.5)] transition-all">
+                  <Button asChild variant="primary" size="sm" className="bg-primary-500 hover:bg-primary-600 text-black font-bold shadow-[0_0_20px_rgba(253,185,19,0.4)] hover:shadow-[0_0_30px_rgba(253,185,19,0.6)] transition-all">
                     <Link href="/dashboard/new-application">
-                      Start Application
+                      Open Case
                       <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                     </Link>
                   </Button>
@@ -182,23 +182,23 @@ export default function DashboardPage() {
         </div>
 
         {/* Office Action Analyzer */}
-        <div className="bg-white/90 dark:bg-[#1e293b]/90 backdrop-blur-sm border border-pokemon-fire/20 rounded-xl overflow-hidden group hover:border-pokemon-fire/40 transition-all duration-300">
+        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-red-500/20 rounded-xl overflow-hidden group hover:border-red-500/40 transition-all duration-300">
           <div className="flex">
             {/* Left accent bar */}
-            <div className="w-1 bg-pokemon-fire shadow-[0_0_8px_rgba(255,156,84,0.5)]" />
+            <div className="w-1 bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
             <div className="p-5 flex-1">
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-pokemon-fire/15 border border-pokemon-fire/30 flex items-center justify-center flex-shrink-0">
-                  <Radar className="w-5 h-5 text-pokemon-fire drop-shadow-[0_0_8px_rgba(255,156,84,0.6)]" />
+                <div className="w-11 h-11 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center flex-shrink-0">
+                  <Radar className="w-5 h-5 text-red-400 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Office Action Analyzer</h3>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">
-                    Analyze office actions for rejections, deadlines, and prior art. Generate response templates.
+                  <h3 className="font-semibold text-neutral-100 mb-1">Crime Scene Analysis</h3>
+                  <p className="text-sm text-neutral-400 mb-4 leading-relaxed">
+                    Analyze office actions for rejections, deadlines, and prior art threats. Generate response strategy.
                   </p>
-                  <Button asChild variant="outline" size="sm" className="border-pokemon-fire/30 text-pokemon-fire hover:bg-pokemon-fire/10 hover:border-pokemon-fire/50 group-hover:shadow-[0_0_10px_rgba(255,156,84,0.2)] transition-all">
+                  <Button asChild variant="outline" size="sm" className="border-red-500/40 text-red-400 hover:bg-red-500/10 hover:border-red-500/60 group-hover:shadow-[0_0_15px_rgba(239,68,68,0.3)] transition-all">
                     <Link href="/dashboard/office-action">
-                      Analyze Action
+                      Investigate
                       <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                     </Link>
                   </Button>
@@ -212,17 +212,17 @@ export default function DashboardPage() {
       {/* Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* Recent Applications */}
-        <div className="bg-white/90 dark:bg-[#1e293b]/90 backdrop-blur-sm border border-primary-500/15 rounded-xl">
-          <div className="px-5 py-4 border-b border-primary-500/15">
+        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl">
+          <div className="px-5 py-4 border-b border-primary-500/20">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-medium flex items-center gap-2 text-neutral-900 dark:text-neutral-100">
-                <div className="w-6 h-6 rounded-md bg-pokemon-water/15 flex items-center justify-center">
-                  <Swords className="w-3.5 h-3.5 text-pokemon-water" />
+              <h3 className="text-base font-medium flex items-center gap-2 text-neutral-100">
+                <div className="w-6 h-6 rounded-md bg-primary-500/15 flex items-center justify-center">
+                  <Swords className="w-3.5 h-3.5 text-primary-500" />
                 </div>
-                Recent Applications
+                Recent Cases
               </h3>
               {recentApplications.length > 0 && (
-                <Link href="/dashboard/history" className="text-xs text-primary-500 hover:text-primary-600 font-medium hover:underline">
+                <Link href="/dashboard/history" className="text-xs text-primary-500 hover:text-primary-400 font-medium hover:underline">
                   View all
                 </Link>
               )}
@@ -236,10 +236,10 @@ export default function DashboardPage() {
             ) : recentApplications.length === 0 ? (
               <div className="text-center py-8">
                 <div className="w-12 h-12 rounded-full bg-primary-500/10 border border-primary-500/20 flex items-center justify-center mx-auto mb-3">
-                  <Swords className="w-6 h-6 text-neutral-400" />
+                  <Swords className="w-6 h-6 text-neutral-500" />
                 </div>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">No applications yet</p>
-                <p className="text-xs text-neutral-500 dark:text-neutral-500">Start your first patent application</p>
+                <p className="text-sm text-neutral-400 mb-1">No cases yet</p>
+                <p className="text-xs text-neutral-600">Begin your first investigation</p>
               </div>
             ) : (
               <div className="space-y-1">
@@ -250,14 +250,14 @@ export default function DashboardPage() {
                     className="flex items-center justify-between p-3 -mx-3 rounded-lg hover:bg-primary-500/5 transition-colors group"
                   >
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200 truncate group-hover:text-pokemon-water transition-colors">
-                        {app.title || 'Untitled Application'}
+                      <p className="text-sm font-medium text-neutral-200 truncate group-hover:text-primary-500 transition-colors">
+                        {app.title || 'Untitled Case'}
                       </p>
-                      <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                      <p className="text-xs text-neutral-500 mt-0.5">
                         {app.application_number || 'Draft'} · {formatRelativeDate(app.created_at)}
                       </p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-pokemon-water group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-3" />
+                    <ArrowRight className="w-4 h-4 text-neutral-600 group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-3" />
                   </Link>
                 ))}
               </div>
@@ -266,17 +266,17 @@ export default function DashboardPage() {
         </div>
 
         {/* Recent Office Actions */}
-        <div className="bg-white/90 dark:bg-[#1e293b]/90 backdrop-blur-sm border border-primary-500/15 rounded-xl">
-          <div className="px-5 py-4 border-b border-primary-500/15">
+        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm border border-primary-500/20 rounded-xl">
+          <div className="px-5 py-4 border-b border-primary-500/20">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-medium flex items-center gap-2 text-neutral-900 dark:text-neutral-100">
-                <div className="w-6 h-6 rounded-md bg-pokemon-fire/15 flex items-center justify-center">
-                  <Radar className="w-3.5 h-3.5 text-pokemon-fire" />
+              <h3 className="text-base font-medium flex items-center gap-2 text-neutral-100">
+                <div className="w-6 h-6 rounded-md bg-red-500/15 flex items-center justify-center">
+                  <Radar className="w-3.5 h-3.5 text-red-400" />
                 </div>
-                Recent Office Actions
+                Recent Investigations
               </h3>
               {recentOfficeActions.length > 0 && (
-                <Link href="/dashboard/history" className="text-xs text-primary-500 hover:text-primary-600 font-medium hover:underline">
+                <Link href="/dashboard/history" className="text-xs text-primary-500 hover:text-primary-400 font-medium hover:underline">
                   View all
                 </Link>
               )}
@@ -285,15 +285,15 @@ export default function DashboardPage() {
           <div className="p-5">
             {loading ? (
               <div className="flex items-center justify-center py-8">
-                <div className="w-5 h-5 border-2 border-pokemon-fire/20 border-t-pokemon-fire rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-red-500/20 border-t-red-500 rounded-full animate-spin" />
               </div>
             ) : recentOfficeActions.length === 0 ? (
               <div className="text-center py-8">
-                <div className="w-12 h-12 rounded-full bg-pokemon-fire/10 border border-pokemon-fire/20 flex items-center justify-center mx-auto mb-3">
-                  <Radar className="w-6 h-6 text-neutral-400" />
+                <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-3">
+                  <Radar className="w-6 h-6 text-neutral-500" />
                 </div>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">No office actions yet</p>
-                <p className="text-xs text-neutral-500 dark:text-neutral-500">Analyze your first office action</p>
+                <p className="text-sm text-neutral-400 mb-1">No investigations yet</p>
+                <p className="text-xs text-neutral-600">Start analyzing threats</p>
               </div>
             ) : (
               <div className="space-y-1">
@@ -301,24 +301,24 @@ export default function DashboardPage() {
                   <Link
                     key={oa._id}
                     href={`/dashboard/office-action/${oa._id}/analysis`}
-                    className="flex items-center justify-between p-3 -mx-3 rounded-lg hover:bg-primary-500/5 transition-colors group"
+                    className="flex items-center justify-between p-3 -mx-3 rounded-lg hover:bg-red-500/5 transition-colors group"
                   >
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200 truncate group-hover:text-pokemon-fire transition-colors">
-                        {oa.application_number || oa.title_of_invention || 'Office Action'}
+                      <p className="text-sm font-medium text-neutral-200 truncate group-hover:text-red-400 transition-colors">
+                        {oa.application_number || oa.title_of_invention || 'Investigation'}
                       </p>
                       <div className="flex items-center gap-2 mt-0.5">
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                        <p className="text-xs text-neutral-500">
                           {oa.office_action_type || 'Analysis'} · {formatRelativeDate(oa.created_at || '')}
                         </p>
                         {oa.total_rejections > 0 && (
-                          <span className="inline-flex items-center text-[10px] font-medium text-pokemon-fire bg-pokemon-fire/10 border border-pokemon-fire/30 px-1.5 py-0.5 rounded">
-                            {oa.total_rejections} rejection{oa.total_rejections !== 1 ? 's' : ''}
+                          <span className="inline-flex items-center text-[10px] font-medium text-red-400 bg-red-500/10 border border-red-500/30 px-1.5 py-0.5 rounded">
+                            {oa.total_rejections} threat{oa.total_rejections !== 1 ? 's' : ''}
                           </span>
                         )}
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-pokemon-fire group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-3" />
+                    <ArrowRight className="w-4 h-4 text-neutral-600 group-hover:text-red-400 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-3" />
                   </Link>
                 ))}
               </div>
@@ -329,26 +329,26 @@ export default function DashboardPage() {
 
       {/* Getting Started (only shown when no activity) */}
       {totalItems === 0 && !loading && (
-        <div className="border-dashed border-2 border-primary-500/20 bg-primary-500/5 rounded-xl">
+        <div className="border-dashed border-2 border-primary-500/30 bg-primary-500/5 rounded-xl">
           <div className="p-8 text-center">
-            <div className="w-14 h-14 rounded-full bg-pokemon-yellow/10 border border-pokemon-yellow/30 flex items-center justify-center mx-auto mb-4">
-              <Sparkles className="w-7 h-7 text-pokemon-yellow drop-shadow-[0_0_10px_rgba(255,203,5,0.5)]" />
+            <div className="w-14 h-14 rounded-full bg-primary-500/10 border border-primary-500/30 flex items-center justify-center mx-auto mb-4">
+              <Sparkles className="w-7 h-7 text-primary-500 drop-shadow-[0_0_15px_rgba(253,185,19,0.6)]" />
             </div>
-            <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Begin Your Journey</h3>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-5 max-w-sm mx-auto">
-              Ready to catch some patents? Choose your first adventure to get started.
+            <h3 className="font-semibold text-neutral-100 mb-1">Gotham Needs You</h3>
+            <p className="text-sm text-neutral-400 mb-5 max-w-sm mx-auto">
+              The night is young. Choose your first mission to protect innovation in Gotham.
             </p>
             <div className="flex items-center justify-center gap-3">
-              <Button asChild variant="primary" size="sm" className="bg-pokemon-water hover:bg-pokemon-water/90 text-white font-bold">
+              <Button asChild variant="primary" size="sm" className="bg-primary-500 hover:bg-primary-600 text-black font-bold shadow-[0_0_15px_rgba(253,185,19,0.4)]">
                 <Link href="/dashboard/new-application">
                   <Swords className="w-4 h-4 mr-1.5" />
-                  New Patent
+                  New Case
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="sm" className="border-pokemon-fire/30 text-pokemon-fire hover:bg-pokemon-fire/10">
+              <Button asChild variant="outline" size="sm" className="border-red-500/40 text-red-400 hover:bg-red-500/10">
                 <Link href="/dashboard/office-action">
                   <Radar className="w-4 h-4 mr-1.5" />
-                  Analyze Action
+                  Investigate
                 </Link>
               </Button>
             </div>

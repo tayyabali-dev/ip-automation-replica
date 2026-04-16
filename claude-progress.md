@@ -4,23 +4,23 @@ _This file tracks development progress. Update it after completing each feature.
 
 ## Completed
 
-- **Pokemon Theme Overhaul** (Switched from Star Wars theme)
-  - **Color scheme**: Changed primary palette to Pokemon colors
-    - Primary: Pokemon Red (`#DC0A2D` - Pokeball red)
-    - Secondary: Pokemon Yellow (`#FFCB05` - Pikachu yellow)
-    - Accents: Pokemon type colors (Water `#4A90E2`, Electric `#F7D02C`, Fire `#FF9C54`, Grass `#78C850`)
-  - **Animated background**: Pokemon-themed with floating Pokeballs and sparkles, applied to login page and dashboard
-  - **Custom SVG icons**: Created `PokeballLogo` and `PikachuLogo` components (lightning bolt)
-  - **Login page**: Full Pokemon theme with Pokeball pattern bg, Pokeball logo, Pokemon-themed card with corner accents, red glowing text, themed labels ("Trainer ID", "Trainer Code"), "Begin Journey" button
-  - **Sidebar**: Light/dark mode compatible panel with Pokemon colors, Pokeball logo, Pokemon-themed navigation labels, "Day Mode/Night Mode" theme toggle
-  - **Dashboard**: Pokemon-themed stats cards with type-colored icons (water, electric, grass, fire), feature cards with type-colored accent bars, Pokemon-flavored text ("Pokemon Center", "Patents Filed", "Total Caught", "Trainer" greeting)
-  - **Navigation config**: Updated labels ("Pokemon Center", "New Patent", "Office Scan", "Patent Archives", "Poke Center Alerts", "Trainer Settings", "Professor Oak")
-  - **Root layout**: Updated metadata title to "PokePatent — Trainer Bureau"
-  - **globals.css**: Pokemon themed scrollbars, glow effects (`.text-glow-red`, `.text-glow-yellow`, `.text-glow-blue`, `.text-glow-electric`), `.border-glow`, `.pokeball-pattern` classes with floating Pokeballs and sparkles
-  - **Tailwind config**: Pokemon color palette with type colors, Pokemon-themed shadows (`pokemon-glow`, `pikachu-glow`, `pokeball-glow`, etc.)
-  - **DashboardLayout**: Pokemon background pattern instead of starfield
+- **Batman/Gotham Theme Overhaul** (Switched from Pokemon theme)
+  - **Color scheme**: Changed to Batman/Gotham colors
+    - Primary: Batman Yellow (`#FDB913` - Bat Signal yellow)
+    - Dark: Batman Black (`#0A0A0A`)
+    - Accents: Gotham Night (`#1A1F2E`), Steel Gray (`#5A6C7D`), Gold (`#D4AF37`)
+  - **Animated background**: Gotham City themed with flickering city lights and pulsing Bat Signal glow
+  - **Custom SVG icons**: Created `BatmanLogo` and `BatSignalLogo` components
+  - **Login page**: Full Batman theme with Gotham City background, Batman logo, dark card with yellow accents, bat signal glowing text, themed labels ("Agent ID", "Access Code"), "Enter Gotham" button, Batman quote
+  - **Sidebar**: Dark theme panel with Batman colors, Batman logo, Gotham-themed navigation labels, yellow glow effects
+  - **Dashboard**: Batman-themed stats cards with yellow, steel, green, and red icons, feature cards with colored accent bars, Gotham-flavored text ("Batcave", "Cases Closed", "Detective" greeting, "Gotham Needs You")
+  - **Navigation config**: Updated labels ("Batcave", "New Case", "Crime Analysis", "Case Files", "Bat Signal", "Batcomputer", "Alfred")
+  - **Root layout**: Updated metadata title to "Wayne IP — Gotham Patents"
+  - **globals.css**: Gotham themed scrollbars, bat signal glow effects (`.text-glow-yellow`, `.text-glow-bat`, `.text-glow-steel`), `.border-glow`, `.gotham-city` background class with city lights and bat signal glow animations
+  - **Tailwind config**: Batman color palette with Gotham accents, Batman-themed shadows (`bat-signal`, `bat-glow`, `gotham-glow`, `dark-steel`)
+  - **DashboardLayout**: Gotham City background pattern instead of Pokemon
 
-- **Notifications System (Poke Center Alerts)**
+- **Notifications System (Bat Signal)**
   - **Backend API**: Full CRUD endpoints at `/api/v1/notifications/`
     - GET `/` - List notifications with filters (read/unread)
     - POST `/` - Create new notification
@@ -30,22 +30,23 @@ _This file tracks development progress. Update it after completing each feature.
     - DELETE `/{id}` - Delete single notification
     - DELETE `/` - Delete all notifications
   - **Data model**: `backend/app/models/notification.py` with title, message, type (info/warning/success/error/transmission), priority (low/medium/high/urgent), timestamps
-  - **Frontend page**: `/dashboard/notifications` - "Poke Center Alerts" (mostly Star Wars themed, needs update to Pokemon theme)
-  - **Navigation**: Added "Poke Center Alerts" to main nav with Bell icon
+  - **Frontend page**: `/dashboard/notifications` - "Bat Signal" (needs update to Batman theme)
+  - **Navigation**: Added "Bat Signal" to main nav with Bell icon
   - **API client**: `frontend/src/lib/api/notifications.ts` with all CRUD operations
 
 ## In Progress
 
-- Notifications page UI needs Pokemon theme update (currently has Star Wars color scheme)
+- Notifications page UI needs Batman theme update (currently has previous theme colors)
 
 ## Known Issues
 
-- Notifications page still uses some Star Wars color variables (saber-blue, saber-red, etc.) - needs to be updated to Pokemon colors
+- Notifications page still uses some old color variables - needs to be updated to Batman colors
 
 ## Architecture Notes
 
-- `frontend/src/components/ui/PokeballLogo.tsx` — Reusable Pokemon logo components (Pokeball and Pikachu lightning)
-- `frontend/src/app/globals.css` — Pokemon background pattern with `.pokeball-pattern`, `.floating-pokeballs`, and `.sparkles` classes
-- Pokemon type colors available via `pokemon-red`, `pokemon-yellow`, `pokemon-blue`, `pokemon-water`, `pokemon-electric`, `pokemon-fire`, `pokemon-grass` in Tailwind config
-- Theme supports both light and dark modes with appropriate color adjustments
-- Background uses gradient overlays with floating Pokeball pattern and sparkle animations
+- `frontend/src/components/ui/BatmanLogo.tsx` — Reusable Batman logo components (Batman symbol and Bat Signal)
+- `frontend/src/app/globals.css` — Gotham City background pattern with `.gotham-city`, `.city-lights`, and `.bat-signal-glow` classes
+- Batman colors available via `batman-yellow`, `batman-black`, `batman-gray`, `batman-darkBlue`, `batman-steel`, `batman-gold`, `gotham`, `batSignal` in Tailwind config
+- Theme uses dark color scheme with yellow accents for bat signal glow effects
+- Background uses dark gradient with flickering city lights and pulsing bat signal glow
+- All Batman-themed terminology ("Detective", "Batcave", "Gotham", "Wayne IP", etc.)
